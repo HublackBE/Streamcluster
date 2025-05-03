@@ -13,15 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
@@ -97,11 +88,93 @@ button:focus-visible {
   }
 }
 
+header {
+  background-color: #6C4AB6;
+  height: 4rem;
+  width: 100vw;
+  position:sticky;
+  top:  0;
+  z-index: 10;
+
+  display:flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+header a {
+  box-sizing: border-box;
+  flex: 1 0 100%;
+  width: fit-content;
+  padding: 0.5em;
+  height: 100%;
+}
+
+header img {
+  height: 100%;
+  width: auto;
+}
+
 #movieList {
   display:flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: space-evenly;
   align-content: space-between;
-  gap: 20px;
+  gap: 32px;
+}
+
+.movie {
+  flex: 1 0 25rem;
+  will-change: filter;
+  transition: filter 300ms;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(45deg, #268D94 33%, #6C4AB6);
+}
+
+.movie:hover img {
+  filter: drop-shadow(0 0 2em #1F51FF);
+  mix-blend-mode: overlay;
+  cursor: pointer;
+}
+
+
+
+.movie img {
+  display:block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding:0;
+}
+
+.movieDescription {
+  position: fixed;
+  top: 17vh;
+  left: 33.5vw;
+  height: 66vh;
+  width: 33vw;
+  background-color: black;
+  z-index: 20;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.exitX {
+  position:absolute;
+  line-height: 1rem;
+  font-size: 1.5rem;
+  top: 1rem;
+  left:1rem;
+  width: auto;
+}
+
+.exitX:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

@@ -14,17 +14,36 @@ const loadPopular = page => {
   fetch(url, options)
     .then(res => res.json())
     .then(json => {
-      document.querySelector('#app').innerHTML = `<div id="movieList"></div>`;
+      document.querySelector('#app').innerHTML = `
+      <div class='movieDescription hidden'><div class='exitX'>X</div><p class="description"></p></div>
+      <div id="movieList"></div>
+      `;
+      document.querySelector('.exitX').addEventListener('click', closeDetails)
+
       const movieList = document.querySelector("#movieList");
       for (const movie of json.results) {
         console.log(movie);
-        movieList.innerHTML += `<div class='movie'><img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>`
+        movieList.innerHTML += `<div class='movie' id='${movie.id}'><img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>`
+      }
+      for (const movie of document.querySelectorAll(".movie")) {
+        movie.addEventListener('click', () => {
+          showDetails(movie.id);
+        })
       }
     })
     .catch(err => console.error(err));
 
 }
 
+const showDetails = async (id) => {
+  const movieDescriptionDiv = document.querySelector(".movieDescription");
+  document.querySelector(".description").innerHTML = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options).then(res => res.json()).then(json => json.overview);
+  movieDescriptionDiv.classList.remove("hidden");
+}
+
+const closeDetails = () => {
+  document.querySelector(".movieDescription").classList.add("hidden");
+}
 
 const checkSuccess = json => {
   if (!json.success) {
@@ -40,6 +59,3 @@ fetch(url, options)
   .then(res => res.json())
   .then(json => checkSuccess(json))
   .catch(err => console.error(err));
-
-document.querySelector('#app').innerHTML = `
-`
