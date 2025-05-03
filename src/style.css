@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -20,8 +24,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-
-  box-sizing: border-box;
 }
 
 h1 {
@@ -116,6 +118,12 @@ header img {
   width: auto;
 }
 
+footer {
+  width: 100vw;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
 #movieList {
   display:flex;
   flex-wrap: wrap;
@@ -159,7 +167,6 @@ header img {
   background-color: black;
   z-index: 20;
   padding: 2rem;
-  box-sizing: border-box;
 }
 
 .exitX {
