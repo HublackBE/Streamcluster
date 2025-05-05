@@ -53,6 +53,13 @@ const loadPopular = page => {
           console.log('Clicked!');
         })
       }
+
+      for (const DisneyButton of document.querySelectorAll(".watchButtonDisney")) {
+        DisneyButton.addEventListener('click', () => {
+          goToStreaming(DisneyButton.value, 'disney');
+          console.log('Clicked!');
+        })
+      }
     })
     .catch(err => console.error(err));
 }
@@ -67,7 +74,7 @@ const goToStreaming = async (id, streamingPlatform) => {
       console.log(platformsBE)
       for (let platform of platformsBE) {
         if (platform.service.id == streamingPlatform && platform.type == "subscription") {
-          window.open(platform.link);
+          window.open(platform.videoLink);
         }
       }
     }))
