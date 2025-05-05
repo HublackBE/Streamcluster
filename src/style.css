@@ -43,11 +43,9 @@ h1 {
   will-change: filter;
   transition: filter 300ms;
 }
-
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
@@ -71,11 +69,9 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
 button:hover {
   border-color: #646cff;
 }
-
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -86,11 +82,9 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-
   a:hover {
     color: #747bff;
   }
-
   button {
     background-color: #f9f9f9;
   }
@@ -100,18 +94,19 @@ header {
   background-color: #6C4AB6;
   height: 4rem;
   width: 100vw;
-  position: sticky;
-  top: 0;
+  position:sticky;
+  top:  0;
   z-index: 10;
 
-  display: flex;
-  justify-content: center;
+  display:flex;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: stretch;
   flex-wrap: wrap;
 }
 
 header a {
+  box-sizing: border-box;
   flex: 1 0 100%;
   width: fit-content;
   padding: 0.5em;
@@ -130,7 +125,7 @@ footer {
 }
 
 #movieList {
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: space-evenly;
@@ -139,7 +134,7 @@ footer {
 }
 
 .movie {
-  flex: 1 0 20rem;
+  flex: 1 0 25rem;
   will-change: filter;
   transition: filter 300ms;
   padding: 0;
@@ -156,11 +151,11 @@ footer {
 
 
 .movie img {
-  display: block;
+  display:block;
   width: 100%;
   height: auto;
   margin: 0;
-  padding: 0;
+  padding:0;
 }
 
 .movieDescription {
@@ -175,11 +170,11 @@ footer {
 }
 
 .exitX {
-  position: absolute;
+  position:absolute;
   line-height: 1rem;
   font-size: 1.5rem;
   top: 1rem;
-  left: 1rem;
+  left:1rem;
   width: auto;
 }
 
@@ -189,24 +184,4 @@ footer {
 
 .hidden {
   display: none;
-}
-
-.linearInput {
-
-  padding: 6px 12px;
-  background: rgb(31, 32, 35);
-  border: 1px solid rgb(60, 63, 68);
-  border-radius: 4px;
-  font-size: 13px;
-  color: rgb(247, 248, 248);
-  height: 46px;
-  appearance: none;
-  transition: border 0.15s ease 0s;
-
-  :focus {
-    outline: none;
-    box-shadow: none;
-    border-color: rgb(100, 153, 255);
-  }
-
 }
