@@ -43,9 +43,11 @@ h1 {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
@@ -69,9 +71,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -82,9 +86,11 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -94,11 +100,11 @@ header {
   background-color: #6C4AB6;
   height: 4rem;
   width: 100vw;
-  position:sticky;
-  top:  0;
+  position: sticky;
+  top: 0;
   z-index: 10;
 
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-items: stretch;
@@ -125,7 +131,7 @@ footer {
 }
 
 #movieList {
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
   justify-content: space-evenly;
@@ -145,17 +151,16 @@ footer {
 .movie:hover img {
   filter: drop-shadow(0 0 2em #1F51FF);
   mix-blend-mode: overlay;
-  cursor: pointer;
 }
 
 
 
 .movie img {
-  display:block;
+  display: block;
   width: 100%;
   height: auto;
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 
 .movieDescription {
@@ -170,11 +175,11 @@ footer {
 }
 
 .exitX {
-  position:absolute;
+  position: absolute;
   line-height: 1rem;
   font-size: 1.5rem;
   top: 1rem;
-  left:1rem;
+  left: 1rem;
   width: auto;
 }
 
@@ -184,4 +189,37 @@ footer {
 
 .hidden {
   display: none;
+}
+  
+.watchButtonNetflix {
+  position: absolute;
+  top: 50%;
+  left:auto;
+
+  display: block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #1ED760;
+  height: 48px;
+
+}
+
+.watchButtonNetflix:hover {
+  transform: scale(1.04);
+  background-color: #21e065;
+  border-style: none;
 }

@@ -23,7 +23,7 @@ const loadPopular = page => {
       const movieList = document.querySelector("#movieList");
       for (const movie of json.results) {
         console.log(movie);
-        movieList.innerHTML += `<div class='movie' id='${movie.id}'><img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>`
+        movieList.innerHTML += `<div class='movie' id='${movie.id}'><img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'><button class='watchButtonNetflix' type='Button'>Netflix</button></div>`
       }
       for (const movie of document.querySelectorAll(".movie")) {
         movie.addEventListener('click', () => {
