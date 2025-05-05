@@ -108,19 +108,25 @@ footer {
 
 .movie {
   flex: 1 0 25rem;
-  will-change: filter;
-  transition: filter 300ms;
   padding: 0;
   margin: 0;
   background: linear-gradient(45deg, #268D94 33%, #6C4AB6);
 }
 
-.movie:hover img {
+.movie > img {
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.movie:hover {
   filter: drop-shadow(0 0 2em #1F51FF);
+}
+
+.movie:hover > img {
   mix-blend-mode: overlay;
 }
 
-.movie img {
+.movie > img {
   display: block;
   width: 100%;
   height: auto;
@@ -128,14 +134,33 @@ footer {
   padding: 0;
 }
 
-/* Watch Button */
-  
-.watchButtonNetflix {
+/* Watch Buttons */
+
+.watchButtons {
   position: absolute;
-  top: 50%;
-  left:auto;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 50%;
+  margin-left: 25%;
+  display: none;
+
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.movie:hover .watchButtons {
+  display: flex;
+}
+
+.watchButtonNetflix {
+  z-index: 10;
 
   display: block;
+
   outline: none;
   cursor: pointer;
   font-size: 14px;
@@ -150,17 +175,104 @@ footer {
   white-space: normal;
   font-weight: 700;
   text-align: center;
-  padding: 17px 48px;
+  padding: 0.66rem;
   color: #fff;
-  background-color: #1ED760;
+  background-color: hsl(0, 0%, 10%);
   height: 48px;
 
+  text-decoration: none;
 }
 
 .watchButtonNetflix:hover {
   transform: scale(1.04);
-  background-color: #21e065;
+  background-color: hsl(0, 0%, 20%);
   border-style: none;
+}
+
+.watchButtonNetflix img {
+  height: 100%;
+  width: auto;
+}
+
+.watchButtonPrimeVideo {
+  z-index: 10;
+
+  display: block;
+
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background-color: #00061c;
+  height: 48px;
+
+  text-decoration: none;
+}
+
+.watchButtonPrimeVideo:hover {
+  transform: scale(1.04);
+  background-color: #000e42;
+  border-style: none;
+}
+
+.watchButtonPrimeVideo img {
+  height: 100%;
+  width: auto;
+}
+
+.watchButtonDisney {
+  z-index: 10;
+
+  display: block;
+
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background-color: #011c2d;
+  height: 48px;
+
+  text-decoration: none;
+}
+
+.watchButtonDisney:hover {
+  transform: scale(1.04);
+  background-color: #65d1d3;
+  border-style: none;
+}
+
+.watchButtonDisney img {
+  will-change: filter;
+  transition: filter 300ms;
+  height: 100%;
+  width: auto;
+  filter: invert(1);
+}
+
+.watchButtonDisney:hover img {
+  filter: invert(0);
 }
 
 
