@@ -1,3 +1,5 @@
+/* Standard */
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -37,12 +39,20 @@ h1 {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
+/* Light Theme */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
 }
+
+
+/* Header / Navbar */
 
 header {
   background-color: #6C4AB6;
@@ -72,11 +82,17 @@ header img {
   width: auto;
 }
 
+
+/* Footer */
+
 footer {
   width: 100vw;
   text-align: center;
   padding-bottom: 1em;
 }
+
+
+/* Movie Gallery */
 
 #movieList {
   display:flex;
@@ -86,6 +102,9 @@ footer {
   align-content: space-between;
   gap: 32px;
 }
+
+
+/* Movie Posters */
 
 .movie {
   flex: 1 0 25rem;
@@ -102,8 +121,6 @@ footer {
   cursor: pointer;
 }
 
-
-
 .movie img {
   display:block;
   width: 100%;
@@ -111,6 +128,9 @@ footer {
   margin: 0;
   padding:0;
 }
+
+
+/* Movie Description Popup */
 
 .movieDescription {
   position: fixed;
@@ -134,8 +154,4 @@ footer {
 
 .exitX:hover {
   cursor: pointer;
-}
-
-.hidden {
-  display: none;
 }
