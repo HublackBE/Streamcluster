@@ -8,6 +8,61 @@ const options = {
   }
 };
 
+const getProviders = (id) => {
+  const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
+
+  return fetch(url, options)
+    .then(res => res.json())
+    .then(json => {
+      let results = json.results;
+      try {
+        return results.BE.flatrate;
+      } catch {
+        return [];
+      }
+    })
+    .catch(err => {console.error(err); return []});
+}
+
+const createButtons = (id, providersList) => {
+  console.log(providersList)
+  if (providersList.length == 0) {
+    return;
+  }
+  const watchbuttonsDiv = document.getElementById(id).children;
+  for (let provider of providersList) {
+    switch (provider.provider_id){
+      // Disney+
+      case 337:
+        watchbuttonsDiv.innerHTML += `<button class='watchButtonDisney' type='Button' value='${id}'><img src='/Disney.png' alt='Disney+'></img></button>`;
+        break;
+      // Netflix
+      case 8:
+        watchbuttonsDiv.innerHTML += `<button class='watchButtonNetflix' type='Button' value='${id}'><img src="/Netflix.svg" alt="Netflix"></img></button>`;
+        break;
+      // Amazon Prime Video
+      case 119:
+        watchbuttonsDiv.innerHTML += `<button class='watchButtonPrimeVideo' type='Button' value='${id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>`;
+        break;
+    }
+  }
+}
+
+const createGallery = async (movies, callback) => {
+  const movieList = document.querySelector("#movieList");
+      for (const movie of movies) {
+        console.log(movie);
+        movieList.innerHTML += `
+        <div class='movie' id="${movie.id}">
+        <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>
+        <div class="watchButtons">
+        </div></div>
+        `;
+        // TODO: make buttons only appear when available on said streaming platform
+        getProviders(movie.id).then(providers => callback(movie.id, providers)).catch(error => {console.error(error)});
+      }
+}
+
 const loadPopular = page => {
   const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&region=BE';
 
@@ -19,20 +74,8 @@ const loadPopular = page => {
       <div id="movieList"></div>
       `;
       document.querySelector('.exitX').addEventListener('click', closeDetails)
-
-      const movieList = document.querySelector("#movieList");
-      for (const movie of json.results) {
-        console.log(movie);
-        movieList.innerHTML += `
-        <div class='movie' id='${movie.id}'>
-        <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>
-        <div class="watchButtons">
-        <button class='watchButtonNetflix' type='Button' value='${movie.id}'><img src="/Netflix.svg" alt="Netflix"></img></button>
-        <button class='watchButtonPrimeVideo' type='Button' value='${movie.id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>
-        <button class='watchButtonDisney' type='Button' value='${movie.id}'><img src='/Disney.png' alt='Disney+'></img></button>
-        </div></div>`
-        // TODO: make buttons only appear when available on said streaming platform
-      }
+      
+      createGallery(json.results, createButtons)
 
       for (const movie of document.querySelectorAll(".movie")) {
         movie.addEventListener('click', () => {
