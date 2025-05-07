@@ -54,13 +54,16 @@ const createGallery = async (movies) => {
   for (const movie of movies) {
     movieList.innerHTML += `
         <div class='movie' id="${movie.id}">
+        <h1 class='movieTitle'>${movie.title}</h1>
         <div class="watchButtons">
         <h2>Available on</h2>
         <hr>
         </div>
+        <button class='details' type='Button' value='${movie.id}'>Details</button>
         <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>
         </div>
         `;
+
     createButtons(movie.id, await getProviders(movie.id));
   }
 }
@@ -72,14 +75,21 @@ const loadPopular = page => {
     .then(res => res.json())
     .then(async json => {
       document.querySelector('#app').innerHTML = `
-      <div class='movieDescription hidden'><div class='exitX'>X</div><p class="description"></p></div>
-      <div id="movieList"></div>
+      <div class='movieDescription hidden'><div class='exitX'>X</div><div id="loadingAnimationDescription" class="loadingAnimation"><div class="loader"></div><div class="loaderText"></div></div><p class="description"></p></div>
+      <div id="loadingAnimationList" class="loadingAnimation">
+      <div class="loader"></div>
+      <div class="loaderText"></div>
+      </div>
+      <div id="movieList" class='hidden'></div>
       `;
       document.querySelector('.exitX').addEventListener('click', closeDetails)
 
       await createGallery(json.results, createButtons);
 
       await mapButtons();
+
+      document.querySelector("#loadingAnimationList").classList.add("hidden");
+      document.querySelector('#movieList').classList.remove("hidden")
     })
     .catch(err => console.error(err));
 }
@@ -98,6 +108,12 @@ const mapButtons = () => {
       })
     }
   }
+
+  for (const movie of document.querySelectorAll(".details")) {
+    movie.addEventListener('click', () => {
+      showDetails(movie.value);
+    })
+  }
 }
 
 const goToStreaming = async (id, streamingPlatform) => {
@@ -110,7 +126,11 @@ const goToStreaming = async (id, streamingPlatform) => {
       console.log(platformsBE)
       for (let platform of platformsBE) {
         if (platform.service.id == streamingPlatform && platform.type == "subscription") {
-          window.open(platform.videoLink);
+          if (platform.videoLink != undefined) {
+            window.open(platform.videoLink);
+          } else {
+            window.open(platform.link)
+          }
         }
       }
     }))
@@ -119,12 +139,18 @@ const goToStreaming = async (id, streamingPlatform) => {
 
 const showDetails = async (id) => {
   const movieDescriptionDiv = document.querySelector(".movieDescription");
-  document.querySelector(".description").innerHTML = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options).then(res => res.json()).then(json => json.overview);
   movieDescriptionDiv.classList.remove("hidden");
+  movieDescriptionDiv.querySelector(".description").innerHTML = ``;
+  movieDescriptionDiv.querySelector(".description").innerHTML = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, options).then(res => res.json()).then(json => json.overview);
+
+  movieDescriptionDiv.querySelector("#loadingAnimationDescription").classList.add("hidden");
 }
 
 const closeDetails = () => {
-  document.querySelector(".movieDescription").classList.add("hidden");
+  const movieDescriptionDiv = document.querySelector(".movieDescription");
+  movieDescriptionDiv.classList.add("hidden");
+
+  movieDescriptionDiv.querySelector("#loadingAnimationDescription").classList.remove("hidden");
 }
 
 const checkSuccess = json => {

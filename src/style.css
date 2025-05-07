@@ -32,10 +32,11 @@ body {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* Light Theme */
@@ -105,28 +106,43 @@ footer {
   flex: 1 0 25rem;
   padding: 0;
   margin: 0;
-  background: linear-gradient(45deg, #268D94 33%, #6C4AB6);
-}
-
-.movie > img {
+  background: transparent;
   will-change: filter;
-  transition: filter 300ms;
+  transition: 300ms;
 }
 
 .movie:hover {
   filter: drop-shadow(0 0 2em #1F51FF);
-}
-
-.movie:hover > img {
-  mix-blend-mode: overlay;
+  background: linear-gradient(45deg, #268D94 33%, #6C4AB6)
 }
 
 .movie > img {
+  mix-blend-mode: overlay;
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
+}
+
+
+/* Movie Title */
+
+.movieTitle {
+  display: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+
+  color: #fff;
+  text-align: left;
+  text-shadow: -2px 2px 5px #00061c;
+}
+
+.movie:hover .movieTitle {
+  display:block;
 }
 
 
@@ -154,6 +170,11 @@ footer {
 
 .watchButtons h2 {
   margin: 0;
+  text-shadow: -2px 2px 5px #00061c;
+}
+
+.watchButtons h3 {
+  text-shadow: -2px 2px 5px #00061c;
 }
 
 .watchButtons hr {
@@ -161,6 +182,7 @@ footer {
   border: none;
   height: 1px;
   background-color: #fff;
+  filter: drop-shadow(-2px 2px 5px #00061c);
 }
 
 .watchButtonNetflix {
@@ -283,6 +305,47 @@ footer {
 }
 
 
+/* Movie Description Button */
+
+.details {
+  display: none;
+  position: absolute;
+  z-index:10;
+
+  bottom: 1rem;
+  left: 16.66%;
+
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color, border-color, color, box-shadow, filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 66.66%;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background-color: #1A1D4E;
+  height: 48px;
+
+  text-decoration: none;
+}
+
+.details:hover {
+  transform: scale(1.04);
+  background-color: #6C4AB6;
+}
+
+.movie:hover .details {
+  display: block;
+}
+
+
 /* Movie Description Popup */
 
 .movieDescription {
@@ -294,6 +357,11 @@ footer {
   background-color: black;
   z-index: 20;
   padding: 2rem;
+  
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .exitX {
@@ -307,4 +375,88 @@ footer {
 
 .exitX:hover {
   cursor: pointer;
+}
+
+
+/* Loaders */
+
+.loadingAnimation {
+  display:flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Source: https://css-loaders.com/spinner/ */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-right-color: #6C4AB6;
+  animation: l15 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+  animation: l15 2s infinite;
+}
+.loader::after {
+  margin: 8px;
+  animation-duration: 3s;
+}
+@keyframes l15{ 
+  100%{transform: rotate(1turn)}
+}
+
+/* With text */
+/* Source: https://css-loaders.com/classic/ */
+/* HTML: <div class="loader"></div> */
+.loaderText {
+  margin: auto;
+
+  font-weight: bold;
+  font-family: monospace;
+  display: inline-grid;
+  font-size: 30px;
+}
+.loaderText:before,
+.loaderText:after {
+  content:"Loading...";
+  grid-area: 1/1;
+  -webkit-mask-size: 100% 5px,100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: l35-1 1s infinite;
+}
+.loaderText:before {
+  -webkit-mask-image:
+    linear-gradient(#000 0 0),
+    linear-gradient(#000 0 0);
+}
+.loaderText:after {
+  -webkit-mask-image:
+    linear-gradient(#000 0 0);
+  animation:
+    l35-1  1s infinite,
+    l35-2 .2s infinite cubic-bezier(0.5,200,0.5,-200);
+}
+
+@keyframes l35-1{
+  0%   {-webkit-mask-position:0 20px,0 0}
+  20%  {-webkit-mask-position:0 8px ,0 0}
+  40%  {-webkit-mask-position:0 100%,0 0}
+  60%  {-webkit-mask-position:0 3px ,0 0}
+  80%  {-webkit-mask-position:0 15px,0 0}
+  100% {-webkit-mask-position:0 0   ,0 0}
+}
+@keyframes l35-2{
+  100% {transform:translate(0.1px)} 
 }
