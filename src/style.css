@@ -51,7 +51,7 @@ body {
 /* Header / Navbar */
 
 header {
-  background-color: #6C4AB6;
+  background: linear-gradient(45deg, #113F67, #1A1D4E 33%);
   height: 4rem;
   width: 100vw;
   position: sticky;
