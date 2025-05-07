@@ -14,53 +14,55 @@ const getProviders = (id) => {
   return fetch(url, options)
     .then(res => res.json())
     .then(json => {
-      let results = json.results;
       try {
-        return results.BE.flatrate;
-      } catch {
+        return json.results.BE.flatrate;
+      } catch (error) {
         return [];
       }
     })
-    .catch(err => {console.error(err); return []});
+    .catch(err => { console.error(err); return [] });
 }
 
-const createButtons = (id, providersList) => {
-  console.log(providersList)
+const createButtons = (id, providersList = []) => {
+  const watchbuttonsDiv = document.getElementById(id).querySelector('.watchButtons');
+
   if (providersList.length == 0) {
+    watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
     return;
-  }
-  const watchbuttonsDiv = document.getElementById(id).children;
-  for (let provider of providersList) {
-    switch (provider.provider_id){
-      // Disney+
-      case 337:
-        watchbuttonsDiv.innerHTML += `<button class='watchButtonDisney' type='Button' value='${id}'><img src='/Disney.png' alt='Disney+'></img></button>`;
-        break;
-      // Netflix
-      case 8:
-        watchbuttonsDiv.innerHTML += `<button class='watchButtonNetflix' type='Button' value='${id}'><img src="/Netflix.svg" alt="Netflix"></img></button>`;
-        break;
-      // Amazon Prime Video
-      case 119:
-        watchbuttonsDiv.innerHTML += `<button class='watchButtonPrimeVideo' type='Button' value='${id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>`;
-        break;
+  } else {
+    for (let provider of providersList) {
+      switch (provider.provider_id) {
+        // Disney+
+        case 337:
+          watchbuttonsDiv.innerHTML += `<button class='watchButtonDisney' type='Button' value='${id}'><img src='/Disney.png' alt='Disney+'></img></button>`;
+          break;
+        // Netflix
+        case 8:
+          watchbuttonsDiv.innerHTML += `<button class='watchButtonNetflix' type='Button' value='${id}'><img src="/Netflix.svg" alt="Netflix"></img></button>`;
+          break;
+        // Amazon Prime Video
+        case 119:
+          watchbuttonsDiv.innerHTML += `<button class='watchButtonPrimeVideo' type='Button' value='${id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>`;
+          break;
+      }
     }
   }
 }
 
-const createGallery = async (movies, callback) => {
+const createGallery = async (movies) => {
   const movieList = document.querySelector("#movieList");
-      for (const movie of movies) {
-        console.log(movie);
-        movieList.innerHTML += `
+  for (const movie of movies) {
+    movieList.innerHTML += `
         <div class='movie' id="${movie.id}">
-        <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>
         <div class="watchButtons">
-        </div></div>
+        <h2>Available on</h2>
+        <hr>
+        </div>
+        <img src='https://image.tmdb.org/t/p/w500${movie.poster_path}'>
+        </div>
         `;
-        // TODO: make buttons only appear when available on said streaming platform
-        getProviders(movie.id).then(providers => callback(movie.id, providers)).catch(error => {console.error(error)});
-      }
+    createButtons(movie.id, await getProviders(movie.id));
+  }
 }
 
 const loadPopular = page => {
@@ -68,51 +70,42 @@ const loadPopular = page => {
 
   fetch(url, options)
     .then(res => res.json())
-    .then(json => {
+    .then(async json => {
       document.querySelector('#app').innerHTML = `
       <div class='movieDescription hidden'><div class='exitX'>X</div><p class="description"></p></div>
       <div id="movieList"></div>
       `;
       document.querySelector('.exitX').addEventListener('click', closeDetails)
-      
-      createGallery(json.results, createButtons)
 
-      for (const movie of document.querySelectorAll(".movie")) {
-        movie.addEventListener('click', () => {
-          showDetails(movie.id);
-        })
-      }
+      await createGallery(json.results, createButtons);
 
-      for (const NetflixButton of document.querySelectorAll(".watchButtonNetflix")) {
-        NetflixButton.addEventListener('click', () => {
-          goToStreaming(NetflixButton.value, 'netflix');
-          console.log('Clicked!');
-        })
-      }
-
-      for (const PrimeVideoButton of document.querySelectorAll(".watchButtonPrimeVideo")) {
-        PrimeVideoButton.addEventListener('click', () => {
-          goToStreaming(PrimeVideoButton.value, 'prime');
-          console.log('Clicked!');
-        })
-      }
-
-      for (const DisneyButton of document.querySelectorAll(".watchButtonDisney")) {
-        DisneyButton.addEventListener('click', () => {
-          goToStreaming(DisneyButton.value, 'disney');
-          console.log('Clicked!');
-        })
-      }
+      await mapButtons();
     })
     .catch(err => console.error(err));
+}
+
+const mapButtons = () => {
+  const buttonsMap = new Map([
+    [".watchButtonNetflix", "netflix"],
+    [".watchButtonPrimeVideo", "prime"],
+    [".watchButtonDisney", "disney"]
+  ])
+
+  for (const [buttonRef, streamingID] of buttonsMap) {
+    for (const streamingButton of document.querySelectorAll(buttonRef)) {
+      streamingButton.addEventListener('click', () => {
+        goToStreaming(streamingButton.value, streamingID);
+      })
+    }
+  }
 }
 
 const goToStreaming = async (id, streamingPlatform) => {
   const RapidAPIURL = `https://streaming-availability.p.rapidapi.com/shows/movie/${id}`
 
-  fetch(RapidAPIURL, {method: 'GET', headers: { 'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY,'x-rapidapi-host': 'streaming-availability.p.rapidapi.com'}})
+  fetch(RapidAPIURL, { method: 'GET', headers: { 'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY, 'x-rapidapi-host': 'streaming-availability.p.rapidapi.com' } })
     .then((res) => res.json())
-    .then((returnJSON => {console.log(returnJSON); return returnJSON.streamingOptions.be}))
+    .then((returnJSON => { return returnJSON.streamingOptions.be }))
     .then((platformsBE => {
       console.log(platformsBE)
       for (let platform of platformsBE) {

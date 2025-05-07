@@ -28,11 +28,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
 #app {
   margin: 0 auto;
   padding: 2rem;
@@ -134,6 +129,7 @@ footer {
   padding: 0;
 }
 
+
 /* Watch Buttons */
 
 .watchButtons {
@@ -154,6 +150,17 @@ footer {
 
 .movie:hover .watchButtons {
   display: flex;
+}
+
+.watchButtons h2 {
+  margin: 0;
+}
+
+.watchButtons hr {
+  margin: 0;
+  border: none;
+  height: 1px;
+  background-color: #fff;
 }
 
 .watchButtonNetflix {
