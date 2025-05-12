@@ -1,4 +1,6 @@
 import './style.css'
+import './search.js';
+
 
 const options = {
   method: 'GET',
