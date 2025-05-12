@@ -1,6 +1,7 @@
 import './style.css';
 import { loadSearch } from './load';
 import { closeDetails } from './gallery';
+import { createPagination } from './pagination.js';
 
 const options = {
     method: 'GET',
@@ -24,7 +25,10 @@ const checkSuccess = async json => {
         </div>
         <div id="movieList" class='hidden'></div>`;
     document.querySelector('.exitX').addEventListener('click', closeDetails)
-    loadSearch(1, searchQuery);
+
+    loadSearch(urlParameters.get(`page`), searchQuery);
+
+    createPagination(json);
   }
 }
 

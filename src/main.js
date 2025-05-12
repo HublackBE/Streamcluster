@@ -1,6 +1,7 @@
 import './style.css';
 import { loadPopular } from './load.js';
 import { closeDetails } from './gallery.js';
+import { createPagination } from './pagination.js';
 
 const options = {
   method: 'GET',
@@ -9,6 +10,8 @@ const options = {
     Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
   }
 };
+
+const urlParameters = new URLSearchParams(window.location.search);
 
 const checkSuccess = async json => {
   if (!json.success) {
@@ -20,8 +23,13 @@ const checkSuccess = async json => {
         <div class="loaderText"></div>
         </div>
         <div id="movieList" class='hidden'></div>`;
-    document.querySelector('.exitX').addEventListener('click', closeDetails)
-    loadPopular(1);
+    document.querySelector('.exitX').addEventListener('click', closeDetails);
+
+    const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
+
+    loadPopular(page);
+
+    createPagination(json);
   }
 }
 
