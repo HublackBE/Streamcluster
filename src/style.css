@@ -93,9 +93,16 @@ header .center {
   gap: 0.5rem;
 }
 
+header form {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+}
+
 /* Source: https://copy-paste-css.com/form-input-text */
 header #search {
-  display:block;
+  display: block;
 
   flex: 4;
 
@@ -117,8 +124,12 @@ header #search {
 
 }
 
-header #searchButton {
+#searchButton {
   flex: 1;
+}
+
+header #searchButton:hover {
+  cursor: pointer;
 }
 
 
@@ -139,19 +150,30 @@ footer {
   margin: 0 auto;
   justify-content: space-evenly;
   align-content: space-between;
-  gap: 32px;
+  gap: 2rem;
 }
 
 
 /* Movie Posters */
 
 .movie {
-  flex: 1 0 25rem;
+  flex: 1 0 21%;
+  min-width: 15rem;
+  max-width: 25%;
   padding: 0;
   margin: 0;
   background: transparent;
   will-change: filter;
   transition: 300ms;
+  overflow: hidden;
+  text-align: center;
+  object-fit: contain;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 500 / 750;
 }
 
 .movie:hover {
@@ -162,10 +184,31 @@ footer {
 .movie>img {
   mix-blend-mode: overlay;
   display: block;
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
   margin: 0;
   padding: 0;
+  object-fit: contain;
+  position:relative;
+}
+
+.movie .imageTextDiv {
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie .imageText {
+  display: block;
+  height: fit-content;
+  width: 95%;
+  margin: 0;
+  text-shadow: -2px 2px 5px #00061c;
+  text-align: center;
 }
 
 

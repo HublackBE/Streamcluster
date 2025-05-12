@@ -1,14 +1,17 @@
 import './style.css';
-import { loadPopular } from './load.js';
-import { closeDetails } from './gallery.js';
+import { loadSearch } from './load';
+import { closeDetails } from './gallery';
 
 const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
-  }
-};
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
+    }
+  };
+
+const urlParameters = new URLSearchParams(window.location.search);
+const searchQuery = urlParameters.get('query');
 
 const checkSuccess = async json => {
   if (!json.success) {
@@ -21,7 +24,7 @@ const checkSuccess = async json => {
         </div>
         <div id="movieList" class='hidden'></div>`;
     document.querySelector('.exitX').addEventListener('click', closeDetails)
-    loadPopular(1);
+    loadSearch(1, searchQuery);
   }
 }
 
