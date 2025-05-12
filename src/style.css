@@ -132,6 +132,7 @@ header #search:hover {
   transition: all 0.1s ease 0s;
 }
 
+/* Source: https://copy-paste-css.com/ */
 #searchButton {
   flex: 1;
 
