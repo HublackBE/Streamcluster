@@ -1,12 +1,13 @@
 import * as gallery from './gallery.js';
+import { createPagination } from './pagination.js';
 
 const options = {
     method: 'GET',
     headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
+        accept: 'application/json',
+        Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
     }
-  };
+};
 
 export const loadPopular = page => {
     const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}&region=BE`;
@@ -14,6 +15,8 @@ export const loadPopular = page => {
     fetch(url, options)
         .then(res => res.json())
         .then(async json => {
+            createPagination(json);
+
             await gallery.createGallery(json.results);
 
             await gallery.mapButtons();
@@ -30,7 +33,8 @@ export const loadSearch = (page, query) => {
     fetch(url, options)
         .then(res => res.json())
         .then(async json => {
-            console.log(json);
+            createPagination(json);
+
             await gallery.createGallery(json.results);
 
             await gallery.mapButtons();

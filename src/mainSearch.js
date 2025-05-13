@@ -27,8 +27,6 @@ const checkSuccess = async json => {
     document.querySelector('.exitX').addEventListener('click', closeDetails)
 
     loadSearch(urlParameters.get(`page`), searchQuery);
-
-    createPagination(json);
   }
 }
 

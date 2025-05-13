@@ -1,7 +1,6 @@
 import './style.css';
 import { loadPopular } from './load.js';
 import { closeDetails } from './gallery.js';
-import { createPagination } from './pagination.js';
 
 const options = {
   method: 'GET',
@@ -28,8 +27,6 @@ const checkSuccess = async json => {
     const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
 
     loadPopular(page);
-
-    createPagination(json);
   }
 }
 
