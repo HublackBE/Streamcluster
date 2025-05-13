@@ -39,22 +39,14 @@ body {
   display: none !important;
 }
 
-/* Light Theme */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-}
-
 
 /* Header / Navbar */
 
 header {
-  background: linear-gradient(45deg, #113F67, #1A1D4E 33%);
+  background: linear-gradient(45deg, hsl(208, 72%, 24%), hsl(237, 50%, 20%) 33%);
   height: 4rem;
   max-height: 4rem;
-  width: 100vw;
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -80,7 +72,7 @@ header a.logo {
   height: 100%;
   width: fit-content;
 
-  padding: 0.33rem;
+  padding: 0.33rem 0.5rem;
 }
 
 header a img {
@@ -161,7 +153,7 @@ header #searchButton:hover {
 /* Footer */
 
 footer {
-  width: 100vw;
+  width: 100%;
   text-align: center;
   padding-bottom: 1em;
   margin-top: 1em;
@@ -277,6 +269,7 @@ footer button.activePage {
   overflow: hidden;
   text-align: center;
   object-fit: contain;
+  color: #FFF;
 
   display: flex;
   justify-content: center;
@@ -724,5 +717,26 @@ footer button.activePage {
 @keyframes l35-2 {
   100% {
     transform: translate(0.1px)
+  }
+}
+
+
+/* Light Theme */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  footer hr {
+    background-color: #000;
+  }
+
+  header {
+  background: linear-gradient(45deg, hsl(208, 72%, 37%), hsl(237, 50%, 37%) 33%);
+  }
+
+  header #search {
+    background-color: #FFF;
   }
 }
