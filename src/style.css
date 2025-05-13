@@ -185,7 +185,7 @@ footer hr {
 /* Pagination */
 
 footer #pagination {
-  height: 2.5rem;
+  height: auto;
 
   display: flex;
   justify-content: space-between;
