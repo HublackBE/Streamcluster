@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streamcluster</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamcluster</title>
+</head>
 
-  <body>
-    <header>
-      <div class="left">
-        <a href="/" class="logo"><img src="/icon.png" alt="Home Icon" /></a>
-      </div>
-
-      <div class="center">
-        <form action="/search" method="get">
-          <input type="search" name="query" id="search" placeholder="Search for a movie" />
-          <input type="submit" id="searchButton" value="Search" />
-        </form>
-      </div>
-
-      <div class="right">
-        <a href=""></a>
-      </div>
-    </header>
-    <div id="app">
-      
+<body>
+  <header>
+    <div class="left">
+      <a href="/" class="logo"><img src="/icon.png" alt="Home Icon" /></a>
     </div>
-    <footer>
-      <div id="pagination">
-        <button id="previousPage">&laquo;</button>
-        <ul>
+
+    <div class="center">
+      <form action="/search" method="get">
+        <input type="search" name="query" id="search" placeholder="Search for a movie" />
+        <input type="submit" id="searchButton" value="Search" />
+      </form>
+    </div>
+
+    <div class="right">
+      <a href=""></a>
+    </div>
+  </header>
+  <div id="app">
+
+  </div>
+  <footer>
+    <div id="pagination">
+      <ul>
+        <li>
+          <button id="previousPage">&laquo;</button>
+        </li>
+        <ul id="pageNumbers">
           <li><button class="paginationButton">1</button></li>
           <li><button class="paginationButton">2</button></li>
+          <li><button class="paginationButton">3</button></li>
+          <li><button class="paginationButton">4</button></li>
+          <li><button class="paginationButton">5</button></li>
         </ul>
-        <button id="nextPage">&raquo;</button>
-      </div>
-      <hr />
-      © 2025 Hublack - All external content remains the property of the rightful
-      owner.
-    </footer>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+        <li>
+          <button id="nextPage">&raquo;</button>
+        </li>
+      </ul>
+    </div>
+    <hr />
+    © 2025 Hublack - All external content remains the property of the rightful
+    owner.
+  </footer>
+  <script type="module" src="/src/main.js"></script>
+</body>
 
 </html>

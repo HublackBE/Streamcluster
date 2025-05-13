@@ -25,7 +25,7 @@ export const loadPopular = page => {
 }
 
 export const loadSearch = (page, query) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page <= 0 ? 1 : page}`;
 
     fetch(url, options)
         .then(res => res.json())
