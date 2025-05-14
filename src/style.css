@@ -378,6 +378,7 @@ footer button.activePage {
 /* Watch Buttons */
 /* Source: https://copy-paste-css.com/ */
 
+/* TODO: fix button-sizes on smaller screens */
 .watchButtons {
   position: absolute;
   top: 0;
