@@ -60,11 +60,20 @@ const createButtons = (id, providersList = []) => {
 const getProviders = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
 
+    const cache = localStorage.getItem(id);
+
+    if (cache && Date.now() - cache.timestamp < 86400) {
+        return Promise.resolve(cache);
+    }
+
     return fetch(url, options)
         .then(res => res.json())
         .then(json => {
             try {
-                return json.results.BE.flatrate;
+                const providers = json.results.BE.flatrate;
+                console.log(providers);
+                localStorage.setItem(id, providers);
+                return providers;
             } catch (error) {
                 return [];
             }
