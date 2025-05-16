@@ -1,10 +1,10 @@
 const options = {
     method: 'GET',
     headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
+        accept: 'application/json',
+        Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY
     }
-  };
+};
 
 export const createGallery = async (movies) => {
     const movieList = document.querySelector("#movieList");
@@ -23,7 +23,7 @@ export const createGallery = async (movies) => {
         if (movie.poster_path == null && movie.backdrop_path == null) {
             document.getElementById(movie.id).innerHTML += `<div class='imageTextDiv'><h1 class='imageText'>${movie.title}</h1></div>`;
         } else {
-            document.getElementById(movie.id).innerHTML += `<img width="500" height="750" src='https://image.tmdb.org/t/p/w500${movie.poster_path == null? movie.backdrop_path : movie.poster_path}'>
+            document.getElementById(movie.id).innerHTML += `<img width="500" height="750" src='https://image.tmdb.org/t/p/w500${movie.poster_path == null ? movie.backdrop_path : movie.poster_path}'>
           </div>`;
         }
 
@@ -60,25 +60,28 @@ const createButtons = (id, providersList = []) => {
 const getProviders = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
 
-    const cache = localStorage.getItem(id);
+    const cache = localStorage.getItem(id); // Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/
 
-    if (cache && Date.now() - cache.timestamp < 86400) {
-        return Promise.resolve(cache);
+    if (cache != null && Date.now() - JSON.parse(cache).timestamp < 86400000) {
+        return Promise.resolve(JSON.parse(cache).results.BE.flatrate);
+    } else {
+        return fetch(url, options)
+            .then(res => res.json())
+            .then(json => {
+                try {
+                    const providers = json.results.BE.flatrate;
+
+                    json.timestamp = Date.now()
+
+                    localStorage.setItem(id, JSON.stringify(json));
+
+                    return providers;
+                } catch (error) {
+                    return [];
+                }
+            })
+            .catch(err => { console.error(err); return [] });
     }
-
-    return fetch(url, options)
-        .then(res => res.json())
-        .then(json => {
-            try {
-                const providers = json.results.BE.flatrate;
-                console.log(providers);
-                localStorage.setItem(id, providers);
-                return providers;
-            } catch (error) {
-                return [];
-            }
-        })
-        .catch(err => { console.error(err); return [] });
 }
 
 const showDetails = async (id) => {
@@ -121,21 +124,21 @@ export const mapButtons = () => {
 
 const goToStreaming = async (id, streamingPlatform) => {
     const RapidAPIURL = `https://streaming-availability.p.rapidapi.com/shows/movie/${id}`
-  
+
     fetch(RapidAPIURL, { method: 'GET', headers: { 'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY, 'x-rapidapi-host': 'streaming-availability.p.rapidapi.com' } })
-      .then((res) => res.json())
-      .then((returnJSON => { return returnJSON.streamingOptions.be }))
-      .then((platformsBE => {
-        console.log(platformsBE)
-        for (let platform of platformsBE) {
-          if (platform.service.id == streamingPlatform && platform.type == "subscription") {
-            if (platform.videoLink != undefined) {
-              window.open(platform.videoLink);
-            } else {
-              window.open(platform.link)
+        .then((res) => res.json())
+        .then((returnJSON => { return returnJSON.streamingOptions.be }))
+        .then((platformsBE => {
+            console.log(platformsBE)
+            for (let platform of platformsBE) {
+                if (platform.service.id == streamingPlatform && platform.type == "subscription") {
+                    if (platform.videoLink != undefined) {
+                        window.open(platform.videoLink);
+                    } else {
+                        window.open(platform.link)
+                    }
+                }
             }
-          }
-        }
-      }))
-      .catch(err => console.error(err))
-  }
+        }))
+        .catch(err => console.error(err))
+}
