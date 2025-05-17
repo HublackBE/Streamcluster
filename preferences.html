@@ -26,35 +26,24 @@
     </div>
   </header>
   <div id="app">
-
+    <form action="/" method="dialog">
+      <select name="language" id="language">
+        <option value="en-US">English</option>
+        <option value="fr-FR">French</option>
+        <option value="nl-NL">Dutch</option>
+        <option value="de-DE">German</option>
+      </select>
+      <input type="submit" value="Save">
+    </form>
   </div>
   <footer>
-    <div id="pagination">
-      <ul>
-        <li>
-          <button id="firstPage">&laquo;</button>
-        </li>
-        <li>
-          <button id="previousPage">&lsaquo;</button>
-        </li>
-        <ul id="pageNumbers">
-        </ul>
-        <li>
-          <button id="nextPage">&rsaquo;</button>
-        </li>
-        <li>
-          <button id="lastPage">&raquo;</button>
-        </li>
-      </ul>
-    </div>
     <hr />
     <p>
     © 2025 Hublack - All external content remains the property of the rightful
     owner.
     </p>
-  <p class="JustWatchSource">Source of data on providers: JustWatch</p>
   </footer>
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/preferences.js"></script>
 </body>
 
 </html>
