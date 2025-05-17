@@ -39,6 +39,11 @@ export const createButtons = (id, providersList = []) => {
         return;
     } else {
         for (let provider of providersList) {
+            if (provider.provider_id != 337 && provider.provider_id != 8 && provider.provider_id != 119) {
+                watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
+                return;
+            }
+
             switch (provider.provider_id) {
                 // Disney+
                 case 337:
