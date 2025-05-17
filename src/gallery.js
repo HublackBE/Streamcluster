@@ -1,3 +1,5 @@
+import { observer } from "./lazyLoading";
+
 const options = {
     method: 'GET',
     headers: {
@@ -26,12 +28,10 @@ export const createGallery = async (movies) => {
             document.getElementById(movie.id).innerHTML += `<img width="500" height="750" src='https://image.tmdb.org/t/p/w500${movie.poster_path == null ? movie.backdrop_path : movie.poster_path}'>
           </div>`;
         }
-
-        createButtons(movie.id, await getProviders(movie.id));
     }
 }
 
-const createButtons = (id, providersList = []) => {
+export const createButtons = (id, providersList = []) => {
     const watchbuttonsDiv = document.getElementById(id).querySelector('.watchButtons');
 
     if (providersList.length == 0) {
@@ -57,14 +57,17 @@ const createButtons = (id, providersList = []) => {
     }
 }
 
-const getProviders = (id) => {
+export const getProviders = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
 
     const cache = localStorage.getItem(id); // Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/
 
     if (cache != null && Date.now() - JSON.parse(cache).timestamp < 86400000) {
+
         return Promise.resolve(JSON.parse(cache).results.BE.flatrate);
+
     } else {
+
         return fetch(url, options)
             .then(res => res.json())
             .then(json => {
@@ -100,7 +103,7 @@ export const closeDetails = () => {
     movieDescriptionDiv.querySelector("#loadingAnimationDescription").classList.remove("hidden");
 }
 
-export const mapButtons = () => {
+export const mapButtons = (div) => {
     const buttonsMap = new Map([
         [".watchButtonNetflix", "netflix"],
         [".watchButtonPrimeVideo", "prime"],
@@ -108,7 +111,7 @@ export const mapButtons = () => {
     ])
 
     for (const [buttonRef, streamingID] of buttonsMap) {
-        for (const streamingButton of document.querySelectorAll(buttonRef)) {
+        for (const streamingButton of div.querySelectorAll(buttonRef)) {
             streamingButton.addEventListener('click', () => {
                 goToStreaming(streamingButton.value, streamingID);
             })

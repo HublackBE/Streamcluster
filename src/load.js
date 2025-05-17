@@ -1,4 +1,5 @@
 import * as gallery from './gallery.js';
+import { observer } from './lazyLoading.js';
 import { createPagination } from './pagination.js';
 
 const options = {
@@ -19,7 +20,9 @@ export const loadPopular = page => {
 
             await gallery.createGallery(json.results);
 
-            await gallery.mapButtons();
+            for (const movie of document.querySelectorAll(`.movie`)) {
+                observer.observe(movie);
+            }
 
             document.querySelector("#loadingAnimationList").classList.add("hidden");
             document.querySelector('#movieList').classList.remove("hidden");
@@ -37,7 +40,9 @@ export const loadSearch = (page, query) => {
 
             await gallery.createGallery(json.results);
 
-            await gallery.mapButtons();
+            for (const movie of document.querySelectorAll(`.movie`)) {
+                observer.observe(movie);
+            }
 
             document.querySelector("#loadingAnimationList").classList.add("hidden");
             document.querySelector('#movieList').classList.remove("hidden");
