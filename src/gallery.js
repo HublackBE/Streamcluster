@@ -37,9 +37,12 @@ export const createButtons = (id, providersList = []) => {
     if (providersList.length == 0) {
         watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
         return;
+    } else if (providersList[0].provider_id != 337 && providersList[0].provider_id != 8 && providersList[0].provider_id != 119 && providersList[0].provider_id != 1899) {
+        watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
+        return;
     } else {
         for (let provider of providersList) {
-            if (provider.provider_id != 337 && provider.provider_id != 8 && provider.provider_id != 119) {
+            if (provider.provider_id != 337 && provider.provider_id != 8 && provider.provider_id != 119 && provider.provider_id != 1899) {
                 watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
                 return;
             }
@@ -56,6 +59,9 @@ export const createButtons = (id, providersList = []) => {
                 // Amazon Prime Video
                 case 119:
                     watchbuttonsDiv.innerHTML += `<button class='watchButtonPrimeVideo' type='Button' value='${id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>`;
+                    break;
+                case 1899:
+                    watchbuttonsDiv.innerHTML += `<button class='watchButtonHBOMax' type='Button' value='${id}'><img src='/HBOMax.png' alt='HBO Max'></img></button>`;
                     break;
             }
         }
@@ -112,7 +118,8 @@ export const mapButtons = (div) => {
     const buttonsMap = new Map([
         [".watchButtonNetflix", "netflix"],
         [".watchButtonPrimeVideo", "prime"],
-        [".watchButtonDisney", "disney"]
+        [".watchButtonDisney", "disney"],
+        [".watchButtonHBOMax", "hbo"]
     ])
 
     for (const [buttonRef, streamingID] of buttonsMap) {
