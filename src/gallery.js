@@ -60,6 +60,7 @@ export const createButtons = (id, providersList = []) => {
                 case 119:
                     watchbuttonsDiv.innerHTML += `<button class='watchButtonPrimeVideo' type='Button' value='${id}'><img src='/PrimeVideo.svg' alt='Prime Video'></img></button>`;
                     break;
+                // HBO Max
                 case 1899:
                     watchbuttonsDiv.innerHTML += `<button class='watchButtonHBOMax' type='Button' value='${id}'><img src='/HBOMax.png' alt='HBO Max'></img></button>`;
                     break;
