@@ -1,6 +1,8 @@
 import { createButtons, mapButtons } from "./gallery";
 import { getProviders } from "./gallery";
 
+
+// Source: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 const callback = (entries, observer) => {
     entries.forEach(async entry => {
         if (entry.isIntersecting && entry.target.querySelector(`.watchButtons`).innerHTML.trim() == ``) {
