@@ -154,10 +154,9 @@ const goToStreaming = async (id, streamingPlatform) => {
 
     fetch(RapidAPIURL, { method: 'GET', headers: { 'x-rapidapi-key': import.meta.env.VITE_RAPID_API_KEY, 'x-rapidapi-host': 'streaming-availability.p.rapidapi.com' } })
         .then((res) => res.json())
-        .then((returnJSON => { return returnJSON.streamingOptions.be }))
-        .then((platformsBE => {
-            console.log(platformsBE)
-            for (let platform of platformsBE) {
+        .then((returnJSON => { return returnJSON.streamingOptions[preferences.region.toLowerCase()] }))
+        .then((platforms => {
+            for (let platform of platforms) {
                 if (platform.service.id == streamingPlatform && platform.type == "subscription") {
                     if (platform.videoLink != undefined) {
                         window.open(platform.videoLink);
