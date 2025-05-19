@@ -1,6 +1,7 @@
 import * as gallery from './gallery.js';
 import { observer } from './lazyLoading.js';
 import { createPagination } from './pagination.js';
+import { preferences } from './preferences.js';
 
 const options = {
     method: 'GET',
@@ -11,7 +12,7 @@ const options = {
 };
 
 export const loadPopular = page => {
-    const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}&region=BE`;
+    const url = `https://api.themoviedb.org/3/movie/popular?language=${preferences.language}&page=${page}&region=${preferences.region}`;
 
     fetch(url, options)
         .then(res => res.json())
@@ -31,7 +32,7 @@ export const loadPopular = page => {
 }
 
 export const loadSearch = (page, query) => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page <= 0 ? 1 : page}`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=${preferences.language}&page=${page <= 0 ? 1 : page}&region=${preferences.region}`;
 
     fetch(url, options)
         .then(res => res.json())

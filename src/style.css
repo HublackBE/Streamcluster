@@ -159,19 +159,21 @@ header .right {
   padding-right: 1rem;
 }
 
-header .right a{
+header .right a {
   padding: 0.5rem;
 }
 
 header .right a img {
   will-change: filter;
   transition: 300ms;
-  filter: invert(41%) sepia(70%) saturate(422%) hue-rotate(135deg) brightness(98%) contrast(92%); /* https://codepen.io/sosuke/pen/Pjoqqp */
+  filter: invert(41%) sepia(70%) saturate(422%) hue-rotate(135deg) brightness(98%) contrast(92%);
+  /* https://codepen.io/sosuke/pen/Pjoqqp */
 }
 
 header .right a img:hover {
   filter: invert(93%) sepia(14%) saturate(1722%) hue-rotate(90deg) brightness(90%) contrast(98%);
 }
+
 
 /* Footer */
 
@@ -260,7 +262,7 @@ footer button:hover {
 }
 
 footer button:disabled:not(.paginationButton) {
-  mix-blend-mode:overlay;
+  mix-blend-mode: overlay;
 }
 
 footer button:disabled:hover {
@@ -271,6 +273,170 @@ footer button:disabled:hover {
 footer button.activePage {
   background: linear-gradient(45deg, #4AE3B5, #268D94 75%);
   mix-blend-mode: normal;
+}
+
+
+/* Preferences */
+
+#app dialog {
+  background-color: #242424;
+  border: none;
+  border-radius: 1rem;
+  height: 66.66%;
+  width: 33.33%;
+
+  padding: 4em;
+}
+
+#app dialog form {
+  height: 100%;
+  width: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+#app dialog form > label {
+  align-self: flex-start;
+  position: relative;
+  bottom: -1em;
+}
+
+/* Streaming Platforms */
+/* Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries */
+#app dialog form details {
+  border: 1px solid #767676;
+  border-radius: 3px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: 3px 6px;
+  text-align: start;
+
+  cursor: default;
+}
+
+#app dialog form details:hover {
+  background-color: #FFFFFF11;
+}
+
+#app dialog form details[open] {
+  padding-bottom: 0.5em;
+}
+
+#app dialog form details[open]:hover {
+  background-color: transparent;
+}
+
+#app dialog form details div:hover {
+  background-color: #FFFFFF11;
+}
+
+#app dialog form details summary::marker {
+  display: none;
+  font-size: 0;
+}
+
+#app dialog form details summary::-webkit-details-marker {
+  display: none;
+  font-size: 0;
+}
+
+#app dialog form details summary::after {
+  content: "\25BC" / "";
+  display: inline-block;
+  font-size: 0.6rem;
+  height: 1rem;
+  line-height: 1rem;
+  margin-left: 0.5rem;
+  position: relative;
+  transition: transform 0.25s;
+}
+
+#app dialog form details[open] summary {
+  margin-bottom: 1rem;
+}
+
+#app dialog form details[open] summary::after {
+  top: -0.15rem;
+  transform: rotate(180deg);
+}
+
+#app dialog form fieldset {
+  border: 0;
+  padding: 0;
+  width: 100%;
+
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+}
+
+#app dialog form fieldset legend {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+#app dialog form fieldset div {
+  display:flex;
+}
+
+#app dialog form fieldset label {
+  display: block;
+  flex: 0 1 100%;
+}
+
+
+#app dialog form > * {
+  margin: 0;
+  display: block;
+  flex: 0 1 2em;
+}
+
+#app dialog form #confirmButtons {
+ flex: 0 0 2.5em;
+
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 6.66em;
+}
+
+#app dialog form #confirmButtons * {
+  flex: 1 1 25%;
+
+  display: block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 100%;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
+
+}
+
+#app dialog form #confirmButtons *:hover {
+  box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
+  transition: all 0.1s ease 0s;
 }
 
 
@@ -333,7 +499,7 @@ footer button.activePage {
 
 .movie {
   flex: 1 0 16%;
-  min-width: 15rem;
+  min-width: 20rem;
   max-width: 25%;
   padding: 0;
   margin: 0;
@@ -411,7 +577,7 @@ footer button.activePage {
 /* Source: https://copy-paste-css.com/ */
 
 /* TODO: fix button-sizes on smaller screens */
-.watchButtons {
+.movieCenterDiv {
   position: absolute;
   top: 0;
   left: 0;
@@ -422,25 +588,33 @@ footer button.activePage {
   display: none;
 
   flex-direction: column;
-  align-items: space-around;
   justify-content: center;
   gap: 2rem;
 }
 
-.movie:hover .watchButtons {
+.watchButtons {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.movie:hover .movieCenterDiv, .movie:hover .watchButtons {
   display: flex;
 }
 
-.watchButtons h2 {
+.movieCenterDiv h2 {
   margin: 0;
   text-shadow: -2px 2px 5px #00061c;
 }
 
-.watchButtons h3 {
+.movieCenterDiv h3 {
   text-shadow: -2px 2px 5px #00061c;
 }
 
-.watchButtons hr {
+.movieCenterDiv hr {
   margin: 0;
   border: none;
   height: 1px;
@@ -804,7 +978,7 @@ footer button.activePage {
   }
 
   header {
-  background: linear-gradient(45deg, hsl(208, 72%, 37%), hsl(237, 50%, 37%) 33%);
+    background: linear-gradient(45deg, hsl(208, 72%, 37%), hsl(237, 50%, 37%) 33%);
   }
 
   header #search {

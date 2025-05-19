@@ -1,6 +1,7 @@
 import './style.css';
 import { loadPopular } from './load.js';
 import { closeDetails } from './gallery.js';
+import { preferences, mapPreferences } from './preferences.js';
 
 const options = {
   method: 'GET',
@@ -23,6 +24,9 @@ const checkSuccess = async json => {
         </div>
         <div id="movieList" class='hidden'></div>`;
     document.querySelector('.exitX').addEventListener('click', closeDetails);
+
+    mapPreferences();
+    localStorage.setItem(`preferences`, JSON.stringify(preferences));
 
     const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
 
