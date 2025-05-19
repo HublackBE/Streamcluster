@@ -1,5 +1,5 @@
 import './style.css';
-import { loadPopular } from './load.js';
+import { loadDiscover } from './load.js';
 import { closeDetails } from './gallery.js';
 import { preferences, mapPreferences } from './preferences.js';
 
@@ -30,7 +30,7 @@ const checkSuccess = async json => {
 
     const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
 
-    loadPopular(page);
+    loadDiscover(page);
   }
 }
 
