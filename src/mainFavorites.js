@@ -1,5 +1,5 @@
 import './style.css';
-import { loadSearch } from './load.js';
+import { loadFavorites } from './load.js';
 import { closeDetails } from './gallery.js';
 import { preferences, mapPreferences } from './preferences.js';
 
@@ -12,7 +12,6 @@ const options = {
 };
 
 const urlParameters = new URLSearchParams(window.location.search);
-const searchQuery = urlParameters.get('query');
 
 const checkSuccess = async json => {
   if (!json.success) {
@@ -29,9 +28,7 @@ const checkSuccess = async json => {
     mapPreferences();
     localStorage.setItem(`preferences`, JSON.stringify(preferences));
 
-    const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
-
-    loadSearch(page, searchQuery);
+    loadFavorites();
   }
 }
 

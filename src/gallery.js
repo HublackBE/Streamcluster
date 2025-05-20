@@ -26,7 +26,7 @@ export const createGallery = async (movies) => {
           `;
 
         if (movie.poster_path == null && movie.backdrop_path == null) {
-            document.getElementById(movie.id).innerHTML += `<div class='imageTextDiv'><h1 class='imageText'>${movie.title}</h1></div>`;
+            document.getElementById(movie.id).innerHTML += `<div class='imageTextDiv'><h1 class='imageText'>${movie.title}</h1></div></div>`;
         } else {
             document.getElementById(movie.id).innerHTML += `<img width="500" height="750" src='https://image.tmdb.org/t/p/w500${movie.poster_path == null ? movie.backdrop_path : movie.poster_path}'>
           </div>`;

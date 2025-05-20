@@ -29,10 +29,13 @@ body {
 }
 
 #app {
+  width: 100%;
+  height: auto;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
   display: flex;
+  flex-direction: column;
 }
 
 .hidden {
@@ -61,10 +64,16 @@ header div {
   flex: 1 0 33.33%;
 }
 
+/* Header Left */
+
 header .left {
   height: 100%;
   order: -10;
+
+  display: flex;
   justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
 }
 
 header a.logo {
@@ -73,12 +82,52 @@ header a.logo {
   width: fit-content;
 
   padding: 0.33rem 0.5rem;
+  align-self: flex-start;
 }
 
 header a img {
   height: 100%;
   width: auto;
 }
+
+/* Header NavTab */
+/* Source: https://copy-paste-css.com/ */
+header .navTab {
+  text-decoration: none;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 15%;
+
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 66.66%;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
+}
+
+header .navTab:hover {
+  cursor: pointer;
+  box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
+  transition: all 0.1s ease 0s;
+}
+
+header .navTab p {
+  display: block;
+  margin: 0;
+}
+
+/* Header Center */
 
 header .center {
   justify-content: space-between;
@@ -174,6 +223,9 @@ header .right #preferencesButton {
   font-size: 14px;
   height: 66.66%;
   padding: 0.5rem;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
 }
 
 header .right #preferencesButton:hover {
@@ -459,6 +511,7 @@ footer button.activePage {
 
 #movieList {
   margin: 0 auto;
+  width: 100%;
 
   display: flex;
   flex-wrap: wrap;
@@ -473,7 +526,7 @@ footer button.activePage {
 .movie {
   flex: 1 0 16%;
   min-width: 15rem;
-  max-width: 25%;
+  max-width: 20%;
   padding: 0;
   margin: 0;
   background: transparent;
