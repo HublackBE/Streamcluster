@@ -1,6 +1,5 @@
 import './style.css';
 import { loadDiscover } from './load.js';
-import { closeDetails } from './gallery.js';
 import { preferences, mapPreferences } from './preferences.js';
 import { mapFilterSort } from './filterSort.js';
 
@@ -18,13 +17,12 @@ const checkSuccess = async json => {
   if (!json.success) {
     document.querySelector('#app').innerHTML += `<h1>Auth Error</h1><p>${JSON.stringify(json)}</p>`;
   } else {
-    document.querySelector('#app').innerHTML += `<div class='movieDescription hidden'><div class='exitX'>X</div><div id="loadingAnimationDescription" class="loadingAnimation"><div class="loader"></div><div class="loaderText"></div></div><p class="description"></p></div>
+    document.querySelector('#app').innerHTML += `
         <div id="loadingAnimationList" class="loadingAnimation">
         <div class="loader"></div>
         <div class="loaderText"></div>
         </div>
         <div id="movieList" class='hidden'></div>`;
-    document.querySelector('.exitX').addEventListener('click', closeDetails);
 
     mapPreferences();
     localStorage.setItem(`preferences`, JSON.stringify(preferences));

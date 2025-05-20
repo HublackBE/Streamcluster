@@ -22,7 +22,7 @@ export const createGallery = async (movies) => {
           <div class="watchButtons">
           </div>
           </div>
-          <button class='details' type='button' value='${movie.id}'>Details</button>
+          <a class='details' id='${movie.id}D' target="_blank"><img src='/IMDb.png' alt="IMDb"></img></a>
           `;
 
         if (movie.poster_path == null && movie.backdrop_path == null) {
@@ -111,23 +111,13 @@ export const getProviders = (id) => {
     }
 }
 
-const showDetails = async (id) => {
-    const movieDescriptionDiv = document.querySelector(".movieDescription");
-    movieDescriptionDiv.classList.remove("hidden");
-    movieDescriptionDiv.querySelector(".description").innerHTML = ``;
-    movieDescriptionDiv.querySelector(".description").innerHTML = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=${preferences.language}`, options).then(res => res.json()).then(json => json.overview);
+export const mapButtons = async (div) => {
 
-    movieDescriptionDiv.querySelector("#loadingAnimationDescription").classList.add("hidden");
-}
+    const detailsButton = div.querySelector(`.details`);
 
-export const closeDetails = () => {
-    const movieDescriptionDiv = document.querySelector(".movieDescription");
-    movieDescriptionDiv.classList.add("hidden");
+    detailsButton.href = `https://www.imdb.com/title/` + await fetch(`https://api.themoviedb.org/3/movie/${detailsButton.id.slice(0, -1)}/external_ids`, options).then(res => res.json()).then(json => json.imdb_id);
 
-    movieDescriptionDiv.querySelector("#loadingAnimationDescription").classList.remove("hidden");
-}
 
-export const mapButtons = (div) => {
     const buttonsMap = new Map([
         [".watchButtonNetflix", "netflix"],
         [".watchButtonPrimeVideo", "prime"],
