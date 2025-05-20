@@ -1,4 +1,4 @@
-import { sortBy } from './filterSort.js';
+import { genres, sortBy } from './filterSort.js';
 import * as gallery from './gallery.js';
 import { observer } from './lazyLoading.js';
 import { createPagination } from './pagination.js';
@@ -36,10 +36,19 @@ const loadCreate = async (json) => {
 
 export const loadDiscover = page => {
     let with_watch_providers = `with_watch_providers=`;
+
     for (const streamingPlatform of preferences.streamingPlatforms) {
         with_watch_providers += streamingPlatform + `|`;
     }
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${preferences.language}&page=${page}&sort_by=${sortBy}&watch_region=${preferences.region}&${with_watch_providers}`;
+
+    let with_genres = `with_genres=`;
+
+    for (const genre of genres) {
+        with_genres += genre + `,`;
+    }
+
+
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${preferences.language}&page=${page}&sort_by=${sortBy}&watch_region=${preferences.region}&${with_watch_providers}&${with_genres}`;
 
     load(url);
 }

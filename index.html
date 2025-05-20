@@ -28,12 +28,20 @@
   </header>
   <div id="app">
     <form action="/" id="filterSort">
+      <div id="filters">
+        <fieldset id="genres">
+          <legend>Filter by genres:</legend>
+          <input type="submit" value="Filter" id="filterButton">
+        </fieldset>
+      </div>
+      <div id="sorts">
       <label for="sort_by">Sort by</label>
       <select name="sort_by" id="sort_by">
         <option value="popularity.desc">Popularity</option>
         <option value="vote_count.desc">Vote Count (All Time)</option>
         <option value="primary_release_year.desc">Release Date</option>
       </select>
+      </div>
     </form>
 
     <dialog id="preferences">

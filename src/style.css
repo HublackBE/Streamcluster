@@ -511,8 +511,66 @@ footer button.activePage {
 
 #filterSort {
   margin-bottom: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
+#filterSort #sorts {
+  align-self: flex-end;
+}
+
+#filters #genres {
+  border: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem 0;
+}
+
+#filterSort #genres .genre {
+  text-align: start;
+  flex: 0 0 20%;
+}
+
+#filterSort #filters {
+  flex: 0 0 40%;
+  min-width: 660px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Source: https://copy-paste-css.com/ */
+#filterButton {
+  flex: 0 0 20%;
+  align-self: flex-end;
+  width: 20%;
+  order: 10;
+
+  display: block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 25%;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
+}
+
+#filterButton:hover {
+  cursor: pointer;
+  box-shadow: rgb(80 63 205 / 50%) 0px 1px 40px;
+  transition: all 0.1s ease 0s;
+}
 
 /* Movie Gallery */
 
