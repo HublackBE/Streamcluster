@@ -1,3 +1,4 @@
+import { sortBy } from './filterSort.js';
 import * as gallery from './gallery.js';
 import { observer } from './lazyLoading.js';
 import { createPagination } from './pagination.js';
@@ -38,7 +39,7 @@ export const loadDiscover = page => {
     for (const streamingPlatform of preferences.streamingPlatforms) {
         with_watch_providers += streamingPlatform + `|`;
     }
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${preferences.language}&page=${page}&sort_by=popularity.desc&watch_region=${preferences.region}&${with_watch_providers}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=${preferences.language}&page=${page}&sort_by=${sortBy}&watch_region=${preferences.region}&${with_watch_providers}`;
 
     load(url);
 }

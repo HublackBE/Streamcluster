@@ -2,6 +2,7 @@ import './style.css';
 import { loadDiscover } from './load.js';
 import { closeDetails } from './gallery.js';
 import { preferences, mapPreferences } from './preferences.js';
+import { mapFilterSort } from './filterSort.js';
 
 const options = {
   method: 'GET',
@@ -27,6 +28,8 @@ const checkSuccess = async json => {
 
     mapPreferences();
     localStorage.setItem(`preferences`, JSON.stringify(preferences));
+
+    mapFilterSort();
 
     const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
 

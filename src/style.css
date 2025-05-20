@@ -507,6 +507,13 @@ footer button.activePage {
 }
 
 
+/* Filters & Sort */
+
+#filterSort {
+  margin-bottom: 2rem;
+}
+
+
 /* Movie Gallery */
 
 #movieList {
