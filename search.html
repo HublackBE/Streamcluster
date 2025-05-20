@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streamcluster</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamcluster</title>
+</head>
 
-  <body>
-    <header>
-      <div class="left">
-        <a href="/" class="logo"><img src="/icon.png" alt="Home Icon" /></a>
-      </div>
+<body>
+  <header>
+    <div class="left">
+      <a href="/" class="logo"><img src="/icon.png" alt="Home Icon" /></a>
+    </div>
 
-      <div class="center">
-        <form action="/search" method="get">
-          <input type="search" name="query" id="search" placeholder="Search for a movie" />
-          <input type="submit" id="searchButton" value="Search" />
-        </form>
-      </div>
+    <div class="center">
+      <form action="/search" method="get">
+        <input type="search" name="query" id="search" placeholder="Search for a movie" />
+        <input type="submit" id="searchButton" value="Search" />
+      </form>
+    </div>
 
-      <div class="right">
-        <a href=""></a>
-      </div>
-    </header>
-    <div id="app"></div>
-    <footer>
+    <div class="right">
+      <button id="preferencesButton"><img src="/gear-wide-connected.svg" alt="Gear"></button>
+    </div>
+  </header>
+  <div id="app">
+    <dialog id="preferences">
+      <form action="/" method="dialog">
+        <h1>Preferences</h1>
+        <label for="language">Language</label>
+        <select name="language" id="language">
+          <option value="en-US">English</option>
+          <option value="fr-FR">French</option>
+          <option value="nl-NL">Dutch</option>
+          <option value="de-DE">German</option>
+        </select>
+        <label for="region">Region</label>
+        <select name="region" id="region">
+          <option value="BE">Belgium</option>
+          <option value="FR">France</option>
+          <option value="US">United States</option>
+          <option value="DE">Germany</option>
+        </select>
+
+        <label for="Streaming Platforms">Streaming Platforms</label>
+        <details name="Streaming Platforms">
+          <summary>Select your Streaming Platforms</summary>
+
+          <fieldset>
+            <div class="option">
+              <input type="checkbox" id="337" name="337">
+              <label for="337">Disney+</label>
+            </div>
+
+            <div class="option">
+              <input type="checkbox" id="8" name="8">
+              <label for="8">Netflix</label>
+            </div>
+
+            <div class="option">
+              <input type="checkbox" id="119" name="119">
+              <label for="119">Amazon Prime Video</label>
+            </div>
+
+            <div class="option">
+              <input type="checkbox" id="1899" name="1899">
+              <label for="1899">HBO Max</label>
+            </div>
+          </fieldset>
+        </details>
+
+        <div id="confirmButtons">
+          <button id="cancelPreferences">Cancel</button>
+          <button id="savePreferences">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+  </div>
+  <footer>
     <div id="pagination">
       <ul>
         <li>
@@ -45,11 +98,11 @@
         </li>
       </ul>
     </div>
-      <hr />
-      © 2025 Hublack - All external content remains the property of the rightful
-      owner.
-    </footer>
-    <script type="module" src="/src/mainSearch.js"></script>
-  </body>
+    <hr />
+    © 2025 Hublack - All external content remains the property of the rightful
+    owner.
+  </footer>
+  <script type="module" src="/src/mainSearch.js"></script>
+</body>
 
 </html>
