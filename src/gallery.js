@@ -15,13 +15,14 @@ export const createGallery = async (movies) => {
         movieList.innerHTML += `
           <div class='movie' id="${movie.id}">
           <h1 class='movieTitle'>${movie.title}</h1>
+          <button class='favorite' type='button' value='${movie.id}'></button>
           <div class="movieCenterDiv">
           <h2>Available on</h2>
           <hr>
           <div class="watchButtons">
           </div>
           </div>
-          <button class='details' type='Button' value='${movie.id}'>Details</button>
+          <button class='details' type='button' value='${movie.id}'>Details</button>
           `;
 
         if (movie.poster_path == null && movie.backdrop_path == null) {

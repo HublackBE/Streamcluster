@@ -1,3 +1,4 @@
+import { mapFavorite } from "./favorite";
 import { createButtons, mapButtons } from "./gallery";
 import { getProviders } from "./gallery";
 
@@ -9,6 +10,7 @@ const callback = (entries, observer) => {
 
             createButtons(entry.target.id, await getProviders(entry.target.id));
             mapButtons(entry.target);
+            mapFavorite(entry.target, entry.target.id);
         }
     });
 }

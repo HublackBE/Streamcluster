@@ -552,7 +552,6 @@ footer button.activePage {
   text-align: center;
 }
 
-
 /* Movie Title */
 
 .movieTitle {
@@ -562,6 +561,7 @@ footer button.activePage {
   top: 0;
   left: 0;
   margin: 1rem;
+  padding-right: 10%;
 
   color: #fff;
   text-align: left;
@@ -570,6 +570,48 @@ footer button.activePage {
 
 .movie:hover .movieTitle {
   display: block;
+}
+
+/* Movie favorite */
+
+.movie:hover .favorite {
+  display: block;
+}
+
+.movie .favorite {
+  display: none;
+  background: none;
+  border: none;
+
+  aspect-ratio: 1/1;
+
+  width: 10%;
+  height: auto;
+
+  padding: 0;
+  margin: 0.5rem;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
+  background-image: url(../public/bookmark-star.svg);
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  filter: invert(100%);
+}
+
+.movie .favorite:hover {
+  cursor: pointer;
+  background-image: url(../public/bookmark-star-fill.svg);
+}
+
+.movie .favorited {
+  background-image: url(../public/bookmark-star-fill.svg) !important;
+  filter: invert(74%) sepia(64%) saturate(443%) hue-rotate(356deg) brightness(103%) contrast(101%) !important;
 }
 
 
