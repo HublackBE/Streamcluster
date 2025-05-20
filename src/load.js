@@ -66,7 +66,7 @@ export const loadSearch = (page, query) => {
 }
 
 export const loadFavorites = async () => {
-    const favorites = JSON.parse(localStorage.getItem(`Favorites`));
+    const favorites = localStorage.getItem(`Favorites`) == null ? { favorites: [], cache: [] } : JSON.parse(localStorage.getItem(`Favorites`));
 
     await gallery.createGallery(favorites.cache);
 
