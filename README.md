@@ -1,4 +1,8 @@
 # Streamcluster
+### [Overview](#overview)
+### [Prerequisites](#prerequisites)
+### [Installation](#installation)
+## Overview
 Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them.
 ## Prerequisites
 ### [Node.js](https://nodejs.org/)
@@ -13,7 +17,7 @@ Clone the repo using your preferred method.
 ### 2. Install the dependencies
 Use `npm install` to install all the required dependencies
 ### 3. Put your API keys in the .env
-```sh
+```js
 VITE_API_KEY=your-tmdb-api-key-here
 VITE_RAPID_API_KEY=your-streaming-availability-api-key-here
 ```
