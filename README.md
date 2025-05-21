@@ -1,9 +1,7 @@
 # Streamcluster
-[Overview](#overview)
-<br>
-[Prerequisites](#prerequisites)
-<br>
-[Installation](#installation)
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
 ## Overview
 Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them.
 ## Prerequisites
