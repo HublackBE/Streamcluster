@@ -9,6 +9,7 @@
   - [2. Install the dependencies](#2-install-the-dependencies)
   - [3. Put your API keys in the .env](#3-put-your-api-keys-in-the-env)
   - [4. Build the project](#4-build-the-project)
+  - [5. Run the project](#5-run-the-project)
 ## Overview
 Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them.
 ## Prerequisites
@@ -30,5 +31,5 @@ VITE_RAPID_API_KEY=your-streaming-availability-api-key-here
 ```
 ### 4. Build the project
 Use `npm run build` to build the project.
-<br>
+### 5. Run the project
 Use `npm run preview` to host a local server running the build.
