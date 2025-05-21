@@ -1,7 +1,14 @@
-# Streamcluster
+[![Streamcluster](assets/Streamcluster-logo.png)](https://github.com/HublackBE/Streamcluster)
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
+  - [Node.js](#nodejs)
+  - [TMDb API key](#tmdb-api-key)
+  - [Streaming Availability API key](#streaming-availability-api-key)
 - [Installation](#installation)
+  - [1. Clone the repo](#1-clone-the-repo)
+  - [2. Install the dependencies](#2-install-the-dependencies)
+  - [3. Put your API keys in the .env](#3-put-your-api-keys-in-the-env)
+  - [4. Build the project](#4-build-the-project)
 ## Overview
 Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them.
 ## Prerequisites
