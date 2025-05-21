@@ -701,6 +701,12 @@ footer button.activePage {
   text-shadow: -2px 2px 5px #00061c;
 }
 
+@media (max-width: 1500px) {
+  .movieTitle {
+    font-size: 1.5em;
+  }
+}
+
 .movie:hover .movieTitle {
   display: block;
 }
