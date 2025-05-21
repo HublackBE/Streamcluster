@@ -42,8 +42,7 @@ export const createButtons = (id, providersList = []) => {
         return;
     } else {
         for (let provider of providersList) {
-            const acceptedProviders = [337, 8, 119, 1899]
-            console.log(watchbuttonsDiv.innerHTML.trim() == ``);
+            const acceptedProviders = [337, 8, 119, 1899];
             if (watchbuttonsDiv.innerHTML.trim() == `` && !acceptedProviders.includes(provider.provider_id)) {
                 watchbuttonsDiv.innerHTML += `<h3>Unavailable</h3>`
                 return;
@@ -76,15 +75,14 @@ export const createButtons = (id, providersList = []) => {
 export const getProviders = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
 
-    const cache = localStorage.getItem(id); // Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/
+    const cache = localStorage.getItem(id) == null ? null : JSON.parse(localStorage.getItem(id)); // Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/
 
 
     const region = preferences.region;
-    console.log(region);
 
-    if (cache != null && Date.now() - JSON.parse(cache).timestamp < 86400000) {
+    if (cache != null && Date.now() - cache.timestamp < 86400000) {
         try {
-            return Promise.resolve(JSON.parse(cache).results[region].flatrate);
+            return Promise.resolve(cache.results[region].flatrate);
         } catch (error) {
             return Promise.resolve([]);
         }

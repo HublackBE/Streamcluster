@@ -13,8 +13,6 @@ export const mapFavorite = (div) => {
     const button = div.querySelector(`.favorite`);
     const favorites = localStorage.getItem(`Favorites`) == null ? { favorites: [], cache: [] } : JSON.parse(localStorage.getItem(`Favorites`));
 
-    console.log(favorites);
-
     if (favorites.favorites.includes(button.value)) {
         button.classList.add(`favorited`);
     }
@@ -30,7 +28,6 @@ const favoriteMovie = async (button, id) => {
     const movie = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=${preferences.language}`, options).then(res => res.json());
 
     if (button.classList.toggle(`favorited`) /* Returns True when adding class */) {
-        console.log(favorites);
         favorites.favorites.push(id);
         favorites.cache.push(movie);
     } else {

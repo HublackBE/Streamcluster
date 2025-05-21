@@ -19,8 +19,6 @@ const getGenres = () => {
             genres.push(param);
         }
     })
-
-    console.log(genres);
 }
 
 export const mapFilterSort = () => {
@@ -46,7 +44,6 @@ const mapSort = () => {
 
 const mapFilterGenres = async () => {
     const allGenres = await fetch(`https://api.themoviedb.org/3/genre/movie/list?language=${preferences.language}`, options).then(res => res.json()).then(json => json.genres).catch(err => console.error(err));
-    console.log(allGenres);
 
     const genresDiv = document.getElementById(`genres`);
 
