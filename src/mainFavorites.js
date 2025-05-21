@@ -10,8 +10,6 @@ const options = {
   }
 };
 
-const urlParameters = new URLSearchParams(window.location.search);
-
 const checkSuccess = async json => {
   if (!json.success) {
     document.querySelector('#app').innerHTML += `<h1>Auth Error</h1><p>${JSON.stringify(json)}</p>`;
