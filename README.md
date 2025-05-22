@@ -136,6 +136,7 @@ npm run preview
 2. **Use of LocalStorage (Gebruik van LocalStorage):**
    - Used for storing preferences and favorites, e.g.: Storing preferences `localStorage.setItem('preferences', ...)` [[preferences.js:54]](/src/preferences.js#L54)
    - Used for retrieving preferences and favorites, e.g.: Retrieving favorites `localStorage.getItem(`Favorites`) == null ? { favorites: [], cache: [] } : JSON.parse(localStorage.getItem('Favorites'))` [[load.js:69]](/src/load.js#L69)
+   - Used for caching, e.g.: [[gallery.js:97]](/src/gallery.js#L97)
 
 ## 5. Styling & Layout
 
