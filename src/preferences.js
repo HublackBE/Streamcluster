@@ -1,6 +1,3 @@
-import './style.css';
-
-
 export const preferences = localStorage.getItem('preferences') != null ? JSON.parse(localStorage.getItem('preferences')) : { lanugage: 'en-US', region: 'BE', streamingPlatforms: [] };
 
 
