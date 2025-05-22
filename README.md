@@ -157,7 +157,7 @@ Use `npm run preview` to host a local server running the build.
    - `#filterButton` [[style.css:482]](/src/style.css#L482)
    - `#searchButton` [[style.css:156]](/src/style.css#L156)
    - `header #search` [[style.css:132]](/src/style.css#L132)
-   - `.details` [[style.css:700]](/src/style.css#L700))
+   - `.details` [[style.css:700]](/src/style.css#L700)
    - Watch Buttons (e.g.: `.watchButtonNetflix`) [[style.css:758-962]](/src/style.css#L758-L962)
 
 - Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries (used in `#app dialog form details` [[style.css:414]](/src/style.css#L414))
