@@ -48,7 +48,7 @@ const checkSuccess = async json => {
     const page = urlParameters.get(`page`) == null ? 1 : urlParameters.get(`page`);
 
     // Load search results
-    loadSearch(page, searchQuery);
+    loadSearch(page, encodeURIComponent(searchQuery));
   }
 }
 
