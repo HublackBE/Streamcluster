@@ -633,7 +633,7 @@ footer button.activePage {
 .movie {
   flex: 1 0 16%;
   min-width: 17.5rem;
-  max-width: 25%;
+  max-width: 20%;
   padding: 0;
   margin: 0;
   background: transparent;
