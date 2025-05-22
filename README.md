@@ -6,10 +6,11 @@
   - [Streaming Availability API key](#streaming-availability-api-key)
 - [Installation](#installation)
   - [1. Clone the repo](#1-clone-the-repo)
-  - [2. Install the dependencies](#2-install-the-dependencies)
-  - [3. Put your API keys in the .env](#3-put-your-api-keys-in-the-env)
-  - [4. Build the project](#4-build-the-project)
-  - [5. Run the project](#5-run-the-project)
+  - [2. cd into the cloned repository](#2-cd-into-the-cloned-repository)
+  - [3. Install the dependencies](#3-install-the-dependencies)
+  - [4. Put your API keys in the .env](#4-put-your-api-keys-in-the-env)
+  - [5. Build the project](#5-build-the-project)
+  - [6. Run the project](#6-run-the-project)
 - [Technical Requirements](#technical-requirements)
   - [1. DOM Manipulation](#1-dom-manipulation-dom-manipulatie)
   - [2. Modern JavaScript](#2-modern-javascript)
@@ -45,25 +46,30 @@ Clone the repository using your preferred method.
 git clone https://github.com/HublackBE/Streamcluster.git
 ```
 
-## 2. Install the dependencies
+## 2. cd into the cloned repository
+```sh
+cd Streamcluster
+```
+
+## 3. Install the dependencies
 Use `npm install` to install all the required dependencies.
 ```sh
 npm install
 ```
 
-## 3. Put your API keys in the [`.env`](/.env) file
+## 4. Put your API keys in the [`.env`](/.env) file
 ```js
 VITE_API_KEY=your-tmdb-api-key-here
 VITE_RAPID_API_KEY=your-streaming-availability-api-key-here
 ```
 
-## 4. Build the project
+## 5. Build the project
 Use `npm run build` to build the project with Vite.
 ```sh
 npm run build
 ```
 
-## 5. Run the project
+## 6. Run the project
 Use `npm run preview` to host a local server running the build you just made.
 ```sh
 npm run preview
