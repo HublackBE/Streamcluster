@@ -11,6 +11,12 @@
   - [4. Build the project](#4-build-the-project)
   - [5. Run the project](#5-run-the-project)
 - [Technical Requirements](#technical-requirements)
+  - [1. DOM Manipulation](#1-dom-manipulation-dom-manipulatie)
+  - [2. Modern JavaScript](#2-modern-javascript)
+  - [3. Data & API](#3-data--api)
+  - [4. Storage & Validation](#4-storage--validation)
+  - [5. Styling & Layout](#5-styling--layout)
+  - [6. Tooling & Structure](#6-tooling--structure)
 
 
 # Overview
@@ -53,7 +59,7 @@ Use `npm run preview` to host a local server running the build.
 
 # Technical Requirements
 
-### 1. DOM Manipulation (DOM manipulatie)
+## 1. DOM Manipulation (DOM manipulatie)
 
 1. **Selecting Elements:** 
     - Used throughout, e.g.: [document.querySelector(\`#app\`) [main.js:18]](/src/main.js#L18)
@@ -64,9 +70,7 @@ Use `npm run preview` to host a local server running the build.
 3. **Attaching events to Elements:**
     - adddEventListener used throughout the code e.g.: [document.querySelector(\`#preferencesButton\`).addEventListener(\`click\`, () => {...}) [preferences.js:31]](/src/preferences.js#L31)
 
-***
-
-### 2. Modern JavaScript
+## 2. Modern JavaScript
 
 1. **Use of constants**  
    - `const` is used for variables throughout the code, e.g.: [const options = ... [main.js:6]](/src/main.js#L6)
@@ -89,9 +93,7 @@ Use `npm run preview` to host a local server running the build.
 10. **Observer API:**  
     - Intersection Observer for lazy loading (of watch providers), e.g.: [export const observer = new IntersectionObserver(callback, { ... }) [lazyLoading.js:15]](/src/lazyLoading.js#L15)
 
-***
-
-### 3. Data & API
+## 3. Data & API
 
 1. **Fetch to retrieve data:**  
    - Used throughout, e.g.: [fetch(url, options) [load.js:8]](/src/load.js#L8)
@@ -99,9 +101,7 @@ Use `npm run preview` to host a local server running the build.
    - Parsing and using JSON data, e.g.: [gallery.createGallery(json.results) [load.js:15]](/src/load.js#L15)
    - Displayed using the function [createGallery(movies) [gallery.js:12-35]](/src/gallery.js#L12-L35)
 
-***
-
-### 4. Storage & Validation
+## 4. Storage & Validation
 
 1. **Form validation:**  
     - Validate correct API key before loading rest of website: [checkSuccess(json) [main.js:16-36]](/src/main.js#L16-L36)
@@ -110,9 +110,7 @@ Use `npm run preview` to host a local server running the build.
 2. **Use of LocalStorage:**  
    - Used for preferences and favorites, e.g.: [localStorage.setItem('preferences', ...) [preferences.js:44]](/src/preferences.js#L44)
 
-***
-
-### 5. Styling & Layout
+## 5. Styling & Layout
 
 1. **Basic HTML layout (flexbox or CSS grid):**  
    - Layout is handled in HTML/CSS, referenced via [import './style.css'; [main.js:1]](/src/main.js#L1)
@@ -121,9 +119,7 @@ Use `npm run preview` to host a local server running the build.
 3. **User-friendly elements (delete buttons, icons, ...):**  
    - Example: Favorite button, streaming platform icons, e.g.: [`<button class='favorite' ...></button>` [gallery.js:10]](/src/gallery.js#L10)
 
-***
-
-### 6. Tooling & Structure
+## 6. Tooling & Structure
 
 1. **Project is set up with Vite:**
     - Steps to build Vite project included in [#Installation](#installation)
