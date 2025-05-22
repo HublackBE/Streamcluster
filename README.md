@@ -5,7 +5,7 @@
   - [TMDb API key](#tmdb-api-key)
   - [Streaming Availability API key](#streaming-availability-api-key)
 - [Installation](#installation)
-  - [1. Clone the repo](#1-clone-the-repo)
+  - [1. Clone the repository](#1-clone-the-repository)
   - [2. cd into the cloned repository](#2-cd-into-the-cloned-repository)
   - [3. Install the dependencies](#3-install-the-dependencies)
   - [4. Put your API keys in the .env](#4-put-your-api-keys-in-the-env)
