@@ -572,6 +572,15 @@ footer button.activePage {
   transition: all 0.1s ease 0s;
 }
 
+/* Exceeded Quota Waring */
+.exceededQuota {
+  color: #FF0000;
+}
+
+h1.exceededQuota {
+  margin: 0;
+}
+
 /* Movie Gallery */
 
 #movieList {
