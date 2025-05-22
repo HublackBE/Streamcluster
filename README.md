@@ -107,7 +107,7 @@ Use `npm run preview` to host a local server running the build.
    - Parsing and using JSON data, e.g.: `await gallery.createGallery(json.results)` [[load.js:27]](/src/load.js#L27)
    - Displayed using the function `createGallery(movies)` [[gallery.js:12-35]](/src/gallery.js#L12-L35)
 
-## 4. Storage & Validation
+## 4. Storage & Validation (Opslag & validatie)
 
 1. **Form validation:**  
     - Validate correct API key before loading rest of website: `checkSuccess(json)` [[main.js:16-36]](/src/main.js#L16-L36)
