@@ -20,7 +20,7 @@
 
 
 # Overview
-Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them.
+Streamcluster is a modern web application developed for my 'Web Advanced' course. It enables users to discover movies available on their selected streaming platforms, manage personal preferences, and curate a list of favorites. The project leverages the TMDb and Streaming Availability APIs, features dynamic filtering and pagination, and is built with modular JavaScript using Vite for fast development and optimized builds.
 
 
 # Prerequisites
@@ -130,3 +130,15 @@ Use `npm run preview` to host a local server running the build.
    - CSS is imported
    - multiple pages are correctly setup in [[vite.config.js:16-20]](/vite.config.js#L16-L20)
    - Vite conventions are followed.
+
+---
+
+# Sources
+- GitHub Copilot was used to assist with code comments and to help write and structure the ["Overview"](#overview) and ["Technical Requirements"](#technical-requirements) sections of this README.
+- Source: https://www.w3schools.com/jsref/met_loc_reload.asp (used in [location.reload() [preferences.js:57]](/src/preferences.js#L57))
+- Source: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API (used in [callback function [lazyLoading.js:7]](/src/lazyLoading.js#L7))
+- Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/ (used in [const cache = localStorage.getItem(id) ... [gallery.js:54]](/src/gallery.js#L54))
+- Source: https://copy-paste-css.com/ (used in [header .navTab [style.css:84]](/src/style.css#L84), [footer button [style.css:285]](/src/style.css#L285), [#filterButton [style.css:482]](/src/style.css#L482), [#searchButton [style.css:156]](/src/style.css#L156), [header #search [style.css:132]](/src/style.css#L132), [.details [style.css:700]](/src/style.css#L700))
+- Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries (used in [#app dialog form details [style.css:414]](/src/style.css#L414))
+- Source: https://css-loaders.com/spinner/ (used in [.loader [style.css:837]](/src/style.css#L837))
+- Source: https://css-loaders.com/classic/ (used in [.loaderText [style.css:868]](/src/style.css#L868))
