@@ -37,33 +37,33 @@ A valid [Streaming Availability API key](https://rapidapi.com/movie-of-the-night
 
 # Installation
 
-### 1. Clone the repository
+## 1. Clone the repository
 Clone the repository using your preferred method.
 
-#### For example: using the CLI
+### For example: using the CLI
 ```sh
 git clone https://github.com/HublackBE/Streamcluster.git
 ```
 
-### 2. Install the dependencies
+## 2. Install the dependencies
 Use `npm install` to install all the required dependencies.
 ```sh
 npm install
 ```
 
-### 3. Put your API keys in the [`.env`](/.env) file
+## 3. Put your API keys in the [`.env`](/.env) file
 ```js
 VITE_API_KEY=your-tmdb-api-key-here
 VITE_RAPID_API_KEY=your-streaming-availability-api-key-here
 ```
 
-### 4. Build the project
+## 4. Build the project
 Use `npm run build` to build the project with Vite.
 ```sh
 npm run build
 ```
 
-### 5. Run the project
+## 5. Run the project
 Use `npm run preview` to host a local server running the build you just made.
 ```sh
 npm run preview
