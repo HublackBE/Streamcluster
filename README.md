@@ -86,6 +86,7 @@ Use `npm run preview` to host a local server running the build.
    - Used for concise if/else, e.g.: [const total_pages = json.total_pages > 500 ? 500 : json.total_pages; [pagination.js:6]](/src/pagination.js#L6)
 7. **Callback functions:**  
    - Used in `.then()` and event listeners, e.g.: [.then(json => checkSuccess(json)) [main.js:29]](/src/main.js#L29)
+   - Used in Intersection Observer [IntersectionObserver(***callback***, { ... }) [lazyLoading.js:15]](/src/lazyLoading.js#L15)
 8. **Promises:**  
    - Fetch API returns promises, e.g.: [fetch(url, options).then(res => res.json()) [load.js:8]](/src/load.js#L8)
 9. **Async & Await:**  
