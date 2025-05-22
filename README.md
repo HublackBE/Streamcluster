@@ -156,6 +156,22 @@ npm run preview
 
 ---
 
+# Screenshots
+
+## Main Page
+![Main Page](/assets/screenshots/Main.png)
+
+## Main Page Bottom
+![Main Page Bottom](/assets/screenshots/Main_bottom.png)
+
+## Preferences Pop-up
+![Preferences Pop-up](/assets/screenshots/Preferences.png)
+
+## Favorites Page
+![Favorites Page](/assets/screenshots/Favorites.png)
+
+---
+
 # Sources
 - GitHub Copilot:
    - Assisted with code comments
