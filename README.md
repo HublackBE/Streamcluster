@@ -131,7 +131,7 @@ npm run preview
 
 1. **Form validation:**  
     - Validate correct API key before loading rest of website: `checkSuccess(json)` [[main.js:16-36]](/src/main.js#L16-L36)
-    - Search Query encoded to valid format for URL-parameter: `encodeURI(searchInput.value)` [[search.js:11]](/src/search.js#L11)
+    - Search Query encoded to valid format for URL-parameter: `encodeURIComponent(searchQuery)` [[mainSearch.js:51]](/src/mainSearch.js#L51)
     - Validate presence of Preferences in localStorage, if none found returns default preferences [[preferences.js:1]](/src/preferences.js#L1)
 2. **Use of LocalStorage:**
    - Used for storing preferences and favorites, e.g.: Storing preferences `localStorage.setItem('preferences', ...)` [[preferences.js:54]](/src/preferences.js#L54)
