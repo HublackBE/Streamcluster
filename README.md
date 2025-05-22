@@ -49,6 +49,7 @@ Use `npm run build` to build the project.
 ### 5. Run the project
 Use `npm run preview` to host a local server running the build.
 
+--- 
 
 # Technical Requirements
 
@@ -63,7 +64,7 @@ Use `npm run preview` to host a local server running the build.
 3. **Attaching events to Elements:**
     - adddEventListener used throughout the code e.g.: [document.querySelector(\`#preferencesButton\`).addEventListener(\`click\`, () => {...}) [preferences.js:31]](/src/preferences.js#L31)
 
----
+***
 
 ### 2. Modern JavaScript
 
@@ -88,7 +89,7 @@ Use `npm run preview` to host a local server running the build.
 10. **Observer API:**  
     - Intersection Observer for lazy loading (of watch providers), e.g.: [export const observer = new IntersectionObserver(callback, { ... }) [lazyLoading.js:15]](/src/lazyLoading.js#L15)
 
----
+***
 
 ### 3. Data & API
 
@@ -98,7 +99,7 @@ Use `npm run preview` to host a local server running the build.
    - Parsing and using JSON data, e.g.: [gallery.createGallery(json.results) [load.js:15]](/src/load.js#L15)
    - Displayed using the function [createGallery(movies) [gallery.js:12-35]](/src/gallery.js#L12-L35)
 
----
+***
 
 ### 4. Storage & Validation
 
@@ -109,7 +110,7 @@ Use `npm run preview` to host a local server running the build.
 2. **Use of LocalStorage:**  
    - Used for preferences and favorites, e.g.: [localStorage.setItem('preferences', ...) [preferences.js:44]](/src/preferences.js#L44)
 
----
+***
 
 ### 5. Styling & Layout
 
@@ -120,7 +121,7 @@ Use `npm run preview` to host a local server running the build.
 3. **User-friendly elements (delete buttons, icons, ...):**  
    - Example: Favorite button, streaming platform icons, e.g.: [`<button class='favorite' ...></button>` [gallery.js:10]](/src/gallery.js#L10)
 
----
+***
 
 ### 6. Tooling & Structure
 
