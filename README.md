@@ -157,7 +157,9 @@ npm run preview
 ---
 
 # Sources
-- GitHub Copilot was used to assist with code comments and to help write and structure the ["Overview"](#overview) and ["Technical Requirements"](#technical-requirements) sections of this README.
+- GitHub Copilot:
+   - Assisted with code comments
+   - Helped write and structure the ["Overview"](#overview) and ["Technical Requirements"](#technical-requirements) sections of this README.
 
 - Source: https://www.w3schools.com/jsref/met_loc_reload.asp (used in `location.reload()` [[preferences.js:57]](/src/preferences.js#L57))
 
