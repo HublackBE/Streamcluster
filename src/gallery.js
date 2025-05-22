@@ -1,4 +1,3 @@
-import { observer } from "./lazyLoading";
 import { preferences } from "./preferences";
 
 const options = {
