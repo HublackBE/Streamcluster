@@ -17,7 +17,7 @@
   - [4. Storage & Validation](#4-storage--validation)
   - [5. Styling & Layout](#5-styling--layout)
   - [6. Tooling & Structure](#6-tooling--structure)
-
+- [Sources](#sources)
 
 # Overview
 Streamcluster is a modern web application developed for my 'Web Advanced' course. It enables users to discover movies available on their selected streaming platforms, manage personal preferences, and curate a list of favorites. The project leverages the TMDb and Streaming Availability APIs, features dynamic filtering and pagination, and is built with modular JavaScript using Vite for fast development and optimized builds.
