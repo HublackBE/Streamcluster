@@ -1,6 +1,3 @@
-import './style.css';
-
-
 const options = {
     method: 'GET',
     headers: {
