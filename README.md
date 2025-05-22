@@ -81,7 +81,7 @@ Use `npm run preview` to host a local server running the build.
 4. **Array methods:**  
    - `.includes`, `.push`, `.splice`, etc., e.g.: [preferences.streamingPlatforms.includes(input.name) [preferences.js:18]](/src/preferences.js#L18)
 5. **Arrow functions:**  
-   - Used throughout, e.g.: [const search = () => { ... } [search.js:8]](/src/search.js#L8)
+   - Used throughout, e.g.: [const search = () => { ... } [search.js:12]](/src/search.js#L12)
 6. **Conditional (ternary) operator:**  
    - Used for concise if/else, e.g.: [const total_pages = json.total_pages > 500 ? 500 : json.total_pages; [pagination.js:6]](/src/pagination.js#L6)
 7. **Callback functions:**  
