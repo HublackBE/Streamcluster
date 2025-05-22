@@ -104,8 +104,8 @@ npm run preview
    - Use of `.push`, e.g.: `favorites.favorites.push(id)` [[favorite.js:31]](/src/favorite.js#L31)
    - Use of `.splice`, e.g.: `favorites.favorites.splice(favorites.favorites.indexOf(id), 1)` [[favorite.js:34]](/src/favorite.js#L34)
 5. **Arrow functions:**  
-   - Used throughout, e.g.: `const search = () => { ... }` [[search.js:9]](/src/search.js#L9)
-6. **Conditional (ternary) operator:**  
+   - Used throughout, e.g.: `const options = { ... }` [[load.js:19]](/src/load.js#L19)
+6. **Conditional (ternary) operator:**
    - Used for concise if/else, e.g.: `const total_pages = json.total_pages > 500 ? 500 : json.total_pages;` [[pagination.js:7]](/src/pagination.js#L7)
 7. **Callback functions:**  
    - Used in `.then()` and event listeners, e.g.: `.then(json => checkSuccess(json))` [[main.js:41]](/src/main.js#L41)
