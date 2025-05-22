@@ -4,8 +4,11 @@
 
 // Import styles and modules
 import './style.css';
+// Import the loadDiscover function from load.js
 import { loadDiscover } from './load.js';
+// Import the preferences object and mapPreferences function from preferences.js
 import { preferences, mapPreferences } from './preferences.js';
+// Import the mapFilterSort function from filterSort.js
 import { mapFilterSort } from './filterSort.js';
 
 // Options for the fetch request, including API key from environment variables

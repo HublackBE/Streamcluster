@@ -125,7 +125,7 @@ export const getProviders = (id) => {
                     return providers;
                 }
             })
-            .catch(err => { console.error(err); return [] });
+            .catch(err => { document.querySelectorAll(`.exceededQuota`).forEach(element => element.classList.remove(`hidden`)); console.error(err); return [] }); // When an error is returned (likely because the API quota has been exceeded), show error message
     }
 }
 
