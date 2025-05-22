@@ -1,0 +1,281 @@
+HublackBE: Tell me where the next Technical Requirements are written in my code (The requirements are written in Dutch, please translate them to English):
+
+
+    DOM manipulatie:  
+        Elementen selecteren
+        Elementen manipuleren
+        Events aan elementen koppelen
+    Modern JavaScript:  
+        Gebruik van constanten
+        Template literals
+        Iteratie over arrays
+        Array methodes
+        Arrow functions
+        Conditional (ternary) operator (moderne if..else)
+        Callback functions
+        Promises
+        Async & Await
+        Observer API (1 is voldoende)
+    Data & API:  
+        Fetch om data op te halen
+        JSON manipuleren en weergeven
+    Opslag & validatie:  
+        Formulier validatie
+        Gebruik van LocalStorage 
+    Styling & layout:  
+        Basis HTML layout (flexbox of CSS grid kan hiervoor worden gebruikt)
+        Basis CSS
+        Gebruiksvriendelijke elementen (verwijderknoppen, icoontjes,...)
+    Tooling & structuur: 
+        Project is opgezet met Vite 
+        Een correcte folderstructuur wordt aangehouden (gescheiden html, css en js files, src folder, dist folder, ...)
+
+
+GitHub Copilot: Here’s where the technical requirements are implemented in your code, with Dutch-to-English translations:
+
+---
+
+### **DOM manipulatie (DOM manipulation)**
+- **Elementen selecteren (Selecting elements):**
+  - Throughout your code, e.g.:
+    - `document.querySelector(...)` in pagination.js, preferences.js, gallery.js, main.js, etc.
+- **Elementen manipuleren (Manipulating elements):**
+  - Setting `innerHTML`, adding/removing classes, enabling/disabling buttons, e.g.:
+    - `pageNumbers.innerHTML += ...` in pagination.js
+    - `option.selected = true;` in preferences.js
+    - `movieList.innerHTML += ...` in gallery.js
+- **Events aan elementen koppelen (Attaching events to elements):**
+  - `addEventListener` used throughout, e.g.:
+    - `button.addEventListener('click', ...)` in pagination.js, gallery.js, preferences.js
+
+---
+
+### **Modern JavaScript**
+- **Gebruik van constanten (Use of constants):**
+  - `const` used for variables, e.g.:
+    - `const url = ...`, `const options = ...` in almost every file
+- **Template literals:**
+  - Backtick strings, e.g.:
+    - `` `<li><button ...>${i}</button></li>` `` in pagination.js
+    - `` `<div class='movie' id="${movie.id}">` `` in gallery.js
+- **Iteratie over arrays (Iterating over arrays):**
+  - `for...of`, `forEach`, e.g.:
+    - `for (const movie of movies)` in gallery.js
+    - `entries.forEach(...)` in lazyLoading.js
+- **Array methodes (Array methods):**
+  - `.includes`, `.push`, `.splice`, `.map`, etc., e.g.:
+    - `preferences.streamingPlatforms.includes(input.name)` in preferences.js
+    - `favorites.favorites.push(id)` in favorite.js
+- **Arrow functions:**
+  - Used throughout, e.g.:
+    - `const search = () => { ... }` in search.js
+    - `entries.forEach(async entry => { ... })` in lazyLoading.js
+- **Conditional (ternary) operator (moderne if..else):**
+  - Used in multiple places, e.g.:
+    - `const total_pages = json.total_pages > 500 ? 500 : json.total_pages;` in pagination.js
+    - `const favorites = localStorage.getItem(...) == null ? ... : ...` in favorite.js
+- **Callback functions:**
+  - Used in `.then()`, event listeners, etc., e.g.:
+    - `.then(json => checkSuccess(json))` in main.js
+    - `button.addEventListener('click', () => { ... })` in pagination.js
+- **Promises:**
+  - Fetch API returns promises, `.then()` used throughout, e.g.:
+    - `fetch(url, options).then(res => res.json())...` in load.js, gallery.js
+- **Async & Await:**
+  - Used in `loadCreate`, `createGallery`, etc., e.g.:
+    - `const loadCreate = async (json) => { ... }` in load.js
+    - `export const createGallery = async (movies) => { ... }` in gallery.js
+- **Observer API (1 is voldoende / at least one):**
+  - Intersection Observer in lazyLoading.js:
+    - `export const observer = new IntersectionObserver(callback, { ... })`
+
+---
+
+### **Data & API**
+- **Fetch om data op te halen (Fetch to retrieve data):**
+  - Used throughout, e.g.:
+    - `fetch(url, options)` in load.js, gallery.js, favorite.js
+- **JSON manipuleren en weergeven (Manipulate and display JSON):**
+  - `.then(res => res.json())`, using JSON data to build UI, e.g.:
+    - `gallery.createGallery(json.results)` in load.js
+    - `console.log(json)` in search.js
+
+---
+
+### **Opslag & validatie (Storage & validation)**
+- **Formulier validatie (Form validation):**
+  - Not explicitly shown in the provided code. If you have a form, validation should be added.
+- **Gebruik van LocalStorage (Use of LocalStorage):**
+  - Used in preferences.js, favorite.js, gallery.js, load.js, e.g.:
+    - `localStorage.setItem('preferences', ...)`
+    - `localStorage.getItem('Favorites')`
+
+---
+
+### **Styling & layout**
+- **Basis HTML layout (flexbox of CSS grid kan hiervoor worden gebruikt) (Basic HTML layout, flexbox or CSS grid can be used):**
+  - Not shown in JS, but referenced via `import './style.css';` in all main files.
+- **Basis CSS (Basic CSS):**
+  - Referenced via `import './style.css';`
+- **Gebruiksvriendelijke elementen (verwijderknoppen, icoontjes,...) (User-friendly elements, delete buttons, icons, ...):**
+  - Example: Favorite button, streaming platform icons in gallery.js:
+    - `<button class='favorite' ...></button>`
+    - `<img src='/Netflix.svg' alt="Netflix">`
+
+---
+
+### **Tooling & structuur**
+- **Project is opgezet met Vite (Project is set up with Vite):**
+  - Indicated by use of `import.meta.env.VITE_API_KEY` in all files.
+- **Een correcte folderstructuur wordt aangehouden (gescheiden html, css en js files, src folder, dist folder, ...) (Correct folder structure: separate html, css, js files, src folder, dist folder, ...):**
+  - Your files are in src, CSS is imported, and Vite conventions are followed.
+
+---
+
+**Summary:**  
+All requirements except explicit form validation are present in your codebase. If you need to add form validation, consider adding it to your search or preferences forms.
+
+HublackBE: Take what I just did in #sym:### 1. DOM Manipulation (DOM manipulatie) and use it as a template for doing the rest of the #sym:## Technical Requirements with what you just responded me
+
+GitHub Copilot: Certainly! Here’s how you can continue your **Technical Requirements** section in your README.md, using the same style as your DOM Manipulation section. Each requirement is translated and illustrated with code/file references from your project.
+
+````markdown
+### 2. Modern JavaScript
+
+1. **Use of constants:**  
+   - `const` is used for variables throughout the code, e.g.: [const options = ... [main.js:6]](/src/main.js#L6)
+2. **Template literals:**  
+   - Backtick strings for dynamic HTML, e.g.: [pageNumbers.innerHTML += `<li><button ...>${i}</button></li>` [pagination.js:13]](/src/pagination.js#L13)
+3. **Iterating over arrays:**  
+   - `for...of`, `forEach`, e.g.: [for (const movie of movies) [gallery.js:8]](/src/gallery.js#L8)
+4. **Array methods:**  
+   - `.includes`, `.push`, `.splice`, etc., e.g.: [preferences.streamingPlatforms.includes(input.name) [preferences.js:18]](/src/preferences.js#L18)
+5. **Arrow functions:**  
+   - Used throughout, e.g.: [const search = () => { ... } [search.js:8]](/src/search.js#L8)
+6. **Conditional (ternary) operator:**  
+   - Used for concise if/else, e.g.: [const total_pages = json.total_pages > 500 ? 500 : json.total_pages; [pagination.js:6]](/src/pagination.js#L6)
+7. **Callback functions:**  
+   - Used in `.then()` and event listeners, e.g.: [.then(json => checkSuccess(json)) [main.js:29]](/src/main.js#L29)
+8. **Promises:**  
+   - Fetch API returns promises, e.g.: [fetch(url, options).then(res => res.json()) [load.js:8]](/src/load.js#L8)
+9. **Async & Await:**  
+   - Used for asynchronous code, e.g.: [const loadCreate = async (json) => { ... } [load.js:13]](/src/load.js#L13)
+10. **Observer API:**  
+    - Intersection Observer for lazy loading, e.g.: [export const observer = new IntersectionObserver(callback, { ... }) [lazyLoading.js:15]](/src/lazyLoading.js#L15)
+
+---
+
+### 3. Data & API
+
+1. **Fetch to retrieve data:**  
+   - Used throughout, e.g.: [fetch(url, options) [load.js:8]](/src/load.js#L8)
+2. **Manipulate and display JSON:**  
+   - Parsing and using JSON data, e.g.: [gallery.createGallery(json.results) [load.js:15]](/src/load.js#L15)
+
+---
+
+### 4. Storage & Validation
+
+1. **Form validation:**  
+   - *Not explicitly shown in the code. If you have a form, validation should be added.*
+2. **Use of LocalStorage:**  
+   - Used for preferences and favorites, e.g.: [localStorage.setItem('preferences', ...) [preferences.js:44]](/src/preferences.js#L44)
+
+---
+
+### 5. Styling & Layout
+
+1. **Basic HTML layout (flexbox or CSS grid):**  
+   - Layout is handled in HTML/CSS, referenced via [import './style.css'; [main.js:1]](/src/main.js#L1)
+2. **Basic CSS:**  
+   - Styles are imported in all main files, e.g.: [import './style.css'; [main.js:1]](/src/main.js#L1)
+3. **User-friendly elements (delete buttons, icons, ...):**  
+   - Example: Favorite button, streaming platform icons, e.g.: [`<button class='favorite' ...></button>` [gallery.js:10]](/src/gallery.js#L10)
+
+---
+
+### 6. Tooling & Structure
+
+1. **Project is set up with Vite:**  
+   - Use of `import.meta.env.VITE_API_KEY` throughout, e.g.: [Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY [main.js:8]](/src/main.js#L8)
+2. **Correct folder structure:**  
+   - Files are organized in `src/`, CSS is imported, and Vite conventions are followed.
+````
+
+You can copy and paste this into your README.md after your DOM Manipulation section, adjusting file/line references as needed.
+
+HublackBE: Could you improve this [overview text] to include a bit more technical stuff and better phrasing?
+
+[overview text]="Streamcluster is a project for my course 'Web Advanced' that allows you to see movies available on your streaming platforms and favorite them."
+
+GitHub Copilot: Certainly! Here’s an improved and more technical overview:
+
+````markdown
+Streamcluster is a modern web application developed for the 'Web Advanced' course. It enables users to discover movies available on their selected streaming platforms, manage personal preferences, and curate a list of favorites. The project leverages the TMDb and Streaming Availability APIs, features dynamic filtering and pagination, and is built with modular JavaScript using Vite for fast development and optimized builds.
+````
+
+HublackBE: Create me a small message explaining how I just used you. This message is used in the README as a "source" of the project
+
+GitHub Copilot: You used GitHub Copilot as an AI programming assistant to help review, improve, and document your codebase. Copilot provided technical explanations, code suggestions, and assisted in writing and structuring the README and project documentation.
+
+HublackBE: Write it as if I wrote it
+
+GitHub Copilot: ```markdown
+# Sources
+- I used GitHub Copilot as an AI programming assistant to help review, improve, and document my codebase. Copilot provided technical explanations, code suggestions, and assisted in writing and structuring this README and other project documentation.
+```
+
+
+HublackBE: Write it more like "GitHub Copilot was used to ..."
+And remember: I only used you for code comments and help with #sym:# Technical Requirements of the README
+
+GitHub Copilot: ```markdown
+# Sources
+- GitHub Copilot was used to assist with code comments and to help write and structure the "Technical Requirements" section of this README.
+```
+
+HublackBE: Give me the sources I used. Use the same style used in #sym:# Sources 
+
+GitHub Copilot: ```markdown
+# Sources
+- GitHub Copilot was used to assist with code comments and to help write and structure the "Technical Requirements" section of this README.
+```
+
+HublackBE: Finde the parts where I commented "Source: ...", those are my sources
+
+GitHub Copilot: ```markdown
+# Sources
+- Source: https://www.w3schools.com/jsref/met_loc_reload.asp (used in [preferences.js](src/preferences.js))
+- Source: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API (used in [lazyLoading.js](src/lazyLoading.js))
+- Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/ (used in [gallery.js](src/gallery.js))
+- Source: https://copy-paste-css.com/ (used in [style.css](src/style.css))
+- Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries (used in [style.css](src/style.css))
+- Source: https://css-loaders.com/spinner/ (used in [style.css](src/style.css))
+- Source: https://css-loaders.com/classic/ (used in [style.css](src/style.css))
+```
+
+HublackBE: Add the lines where those sources were commented (For the lines indication, use the style used in #sym:# Technical Requirements )
+
+GitHub Copilot: ```markdown
+# Sources
+- Source: https://www.w3schools.com/jsref/met_loc_reload.asp (used in [location.reload() [preferences.js:57]](/src/preferences.js#L57))
+- Source: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API (used in [callback function [lazyLoading.js:7]](/src/lazyLoading.js#L7))
+- Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/ (used in [const cache = localStorage.getItem(id) ... [gallery.js:54]](/src/gallery.js#L54))
+- Source: https://copy-paste-css.com/ (used in [style.css](/src/style.css))
+- Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries (used in [style.css](/src/style.css))
+- Source: https://css-loaders.com/spinner/ (used in [style.css](/src/style.css))
+- Source: https://css-loaders.com/classic/ (used in [style.css](/src/style.css))
+```
+
+HublackBE: Also do it for the CSS
+
+GitHub Copilot: ```markdown
+# Sources
+- Source: https://www.w3schools.com/jsref/met_loc_reload.asp (used in [location.reload() [preferences.js:57]](/src/preferences.js#L57))
+- Source: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API (used in [callback function [lazyLoading.js:7]](/src/lazyLoading.js#L7))
+- Source: https://www.slingacademy.com/article/implement-caching-strategies-with-javascript-fetch/ (used in [const cache = localStorage.getItem(id) ... [gallery.js:54]](/src/gallery.js#L54))
+- Source: https://copy-paste-css.com/ (used in [header .navTab [style.css:84]](/src/style.css#L84), [footer button [style.css:285]](/src/style.css#L285), [#filterButton [style.css:482]](/src/style.css#L482), [#searchButton [style.css:156]](/src/style.css#L156), [header #search [style.css:132]](/src/style.css#L132), [.details [style.css:700]](/src/style.css#L700))
+- Source: https://www.sitelint.com/blog/how-to-implement-multiple-selection-with-check-boxes-in-an-html-without-external-libraries (used in [#app dialog form details [style.css:414]](/src/style.css#L414))
+- Source: https://css-loaders.com/spinner/ (used in [.loader [style.css:837]](/src/style.css#L837))
+- Source: https://css-loaders.com/classic/ (used in [.loaderText [style.css:868]](/src/style.css#L868))
+```
