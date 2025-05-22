@@ -77,33 +77,33 @@ npm run preview
 
 --- 
 
-# Technical Requirements
+# Technical Requirements (Technische Vereisten)
 
 ## 1. DOM Manipulation (DOM manipulatie)
 
-1. **Selecting Elements:** 
+1. **Selecting Elements (Elementen selecteren):** 
     - Used throughout, e.g.: `document.querySelector('#app')` [[main.js:18]](/src/main.js#L18)
-2. **Manipulating Elements:**
+2. **Manipulating Elements (Elementen manipuleren):**
     - Setting innerHTML, e.g.: `pageNumbers.innerHTML += ...` [[pagination.js:11]](/src/pagination.js#L11)
     - Adding/Removing classes, e.g.: `button.classList.add('favorited')` [[favorite.js:17]](/src/favorite.js#L17)
     - Enabling/Disabling buttons, e.g.: `currentPageButton.disabled = true` [[pagination.js:41]](/src/pagination.js#L41)
-3. **Attaching events to Elements:**
+3. **Attaching events to Elements (Events aan elementen koppelen):**
     - adddEventListener used throughout the code e.g.: `document.querySelector('#preferencesButton').addEventListener('click', () => {...})` [[preferences.js:31]](/src/preferences.js#L31)
 
 ## 2. Modern JavaScript
 
-1. **Use of constants**  
+1. **Use of constants (Gebruik van constanten):**  
    - `const` is used throughout the code, e.g.: `const options = ...` [[main.js:6]](/src/main.js#L6)
 2. **Template literals:**  
    - Backtick strings for dynamic HTML, e.g.: `pageNumbers.innerHTML += '<li><button ...>${i}</button></li>'` [[pagination.js:11]](/src/pagination.js#L11)
-3. **Iterating over arrays:**  
+3. **Iterating over arrays (Iteratie over arrays):**  
    - Use of `for...of`, e.g.: `for (const movie of movies) {...}` [[gallery.js:14]](/src/gallery.js#L14)
    - Use of `forEach`, e.g.: `entries.forEach(async entry => {...})` [[lazyLoading.js:8]](/src/lazyLoading.js#L8)
-4. **Array methods:**
+4. **Array methods (Array methodes):**
    - Use of `.includes`, e.g.: `preferences.streamingPlatforms.includes(input.name)` [[preferences.js:25]](/src/preferences.js#L25)
    - Use of `.push`, e.g.: `favorites.favorites.push(id)` [[favorite.js:31]](/src/favorite.js#L31)
    - Use of `.splice`, e.g.: `favorites.favorites.splice(favorites.favorites.indexOf(id), 1)` [[favorite.js:34]](/src/favorite.js#L34)
-5. **Arrow functions:**  
+5. **Arrow functions (Arrow functions):**  
    - Used throughout, e.g.: `const options = { ... }` [[load.js:19]](/src/load.js#L19)
 6. **Conditional (ternary) operator:**
    - Used for concise if/else, e.g.: `const total_pages = json.total_pages > 500 ? 500 : json.total_pages;` [[pagination.js:7]](/src/pagination.js#L7)
@@ -121,39 +121,39 @@ npm run preview
 
 ## 3. Data & API
 
-1. **Fetch to retrieve data:**  
+1. **Fetch to retrieve data (Fetch om daata op te halen):**  
    - Used throughout, e.g.: `fetch(url, options)` [[load.js:16]](/src/load.js#L16)
-2. **Manipulate and display JSON:**
+2. **Manipulate and display JSON (JSON manipuleren en weergeven):**
    - Parsing and using JSON data, e.g.: `await gallery.createGallery(json.results)` [[load.js:27]](/src/load.js#L27)
    - Displayed using the function `createGallery(movies)` [[gallery.js:12-35]](/src/gallery.js#L12-L35)
 
 ## 4. Storage & Validation (Opslag & validatie)
 
-1. **Form validation:**  
+1. **Form validation (Formulier validatie):**  
     - Validate correct API key before loading rest of website: `checkSuccess(json)` [[main.js:16-36]](/src/main.js#L16-L36)
     - Search Query encoded to valid format for URL-parameter: `encodeURIComponent(searchQuery)` [[mainSearch.js:51]](/src/mainSearch.js#L51)
     - Validate presence of Preferences in localStorage, if none found returns default preferences [[preferences.js:1]](/src/preferences.js#L1)
-2. **Use of LocalStorage:**
+2. **Use of LocalStorage (Gebruik van LocalStorage):**
    - Used for storing preferences and favorites, e.g.: Storing preferences `localStorage.setItem('preferences', ...)` [[preferences.js:54]](/src/preferences.js#L54)
    - Used for retrieving preferences and favorites, e.g.: Retrieving favorites `localStorage.getItem(`Favorites`) == null ? { favorites: [], cache: [] } : JSON.parse(localStorage.getItem('Favorites'))` [[load.js:69]](/src/load.js#L69)
 
 ## 5. Styling & Layout
 
-1. **Basic HTML layout (flexbox or CSS grid):**
+1. **Basic HTML layout (Basis HTML layout):**
    - Layout is handled in HTML/CSS, referenced via `import './style.css';` [[main.js:1]](/src/main.js#L1)
    - Most of the layout is made using flexbox, e.g.: Movie Gallery [[style.css:623]](/src/style.css#L623)
-2. **Basic CSS:**  
+2. **Basic CSS (Basis CSS):**  
    - Styles are imported in all main files, e.g.: `import './style.css';` [[main.js:1]](/src/main.js#L1)
-3. **User-friendly elements (delete buttons, icons, ...):**  
+3. **User-friendly elements (Gebruiksvriendelijke elementen):**  
    - E.g.: Favorite button `<button class='favorite' ...></button>` [[gallery.js:18]](/src/gallery.js#L18)
    - E.g.: Icon for preferences button `<img src="/gear-wide-connected.svg" alt="Gear">` [[index.html:26]](/index.html#L26)
 
 ## 6. Tooling & Structure
 
-1. **Project is set up with Vite:**
+1. **Project is set up with Vite (Project is opgezet met Vite):**
     - Steps to build Vite project included in [#Installation](#installation)
    - Use of `import.meta.env.VITE_API_KEY` for API keys in .env throughout code, e.g.: `Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY` [[main.js:10]](/src/main.js#L10)
-2. **Correct folder structure:**  
+2. **Correct folder structure (Correcte folderstructuur):**  
    - Files are organized in [`src/`](/src/)
    - images and SVGs are organized in [`public/`](/public/)
    - CSS is imported
